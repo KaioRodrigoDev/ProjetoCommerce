@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const Titulo = styled.p`
-  font-size: 10px;
+  font-size: 20px;
 `
 
 export default function Home() {
