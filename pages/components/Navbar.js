@@ -1,26 +1,47 @@
 import Link from 'next/link'
-import styles from '../../styles/Navbar.module.css'
+import styled from 'styled-components'
+
+const Lista = styled.li`
+  color: #fff;
+  transition: 0.7s;
+  list-style-type: none;
+  font-size: 20px;
+  padding-right: 1rem;
+  &:hover {
+    color: #999;
+  }
+`
+const Container = styled.div`
+  display: flex;
+  background-color: #000;
+  padding: 20px 20px;
+`
+
 export default function Navbar() {
   return (
-    <ul className={styles.navbar}>
-      <li>
-        <Link href="/">
-          <a>Home</a>
-        </Link>
-      </li>
-      <li>
-        <Link href="/produtos">
-          <a>Produtos</a>
-        </Link>
-      </li>
-      <li>
-        <Link href="/sobre">
-          <a>Sobre</a>
-        </Link>
-        <Link href="/new">
-          <a>Novo</a>
-        </Link>
-      </li>
-    </ul>
+    <>
+      <Container>
+        <ul>
+          <Lista>
+            <Link href="/">Home</Link>
+          </Lista>
+        </ul>
+        <ul>
+          <Lista>
+            <Link href="/">Home</Link>
+          </Lista>
+        </ul>
+        <ul>
+          <Lista>
+            <Link href="/">Home</Link>
+          </Lista>
+        </ul>
+        <ul>
+          <Lista>
+            <Link href="/">Home</Link>
+          </Lista>
+        </ul>
+      </Container>
+    </>
   )
 }

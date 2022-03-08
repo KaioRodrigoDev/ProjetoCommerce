@@ -1,9 +1,14 @@
 import styles from '../styles/Home.module.css'
+import styled from 'styled-components'
+
+const Titulo = styled.p`
+  font-size: 10px;
+`
 
 export default function Home() {
   return (
     <>
-      <h1>Loja</h1>
+      <Titulo>Lojinha</Titulo>
     </>
   )
 }
