@@ -1,5 +1,7 @@
 import Axios from 'axios'
 import { useState, useEffect } from 'react'
+import Card from '../../components/Card'
+import Dialog from '../../components/Dialog'
 export default function sobre() {
   //
   //
@@ -32,9 +34,11 @@ export default function sobre() {
   return (
     <>
       <div className="flex justify-center">
-        <div>
-          <h1 className="font-black ">Sobre</h1>
-          <div className="flex bg-cyan-600 w-64 place-content-around">
+        <div className="">
+          <div>
+            <h1 className="flex font-black justify-center">Sobre</h1>
+          </div>
+          <div className="flex flex-col">
             <input
               type="number"
               name="Idade"
@@ -47,11 +51,29 @@ export default function sobre() {
               onChange={handlechangevalues}
               className="border-2"
             />
-            <button onClick={handleClickButton}> Send</button>
+          </div>
+          <div className="text-center">
+            <button
+              className="mt-4 bg-slate-600 p-2 w-28 rounded-lg text-slate-200 "
+              onClick={handleClickButton}
+            >
+              Send
+            </button>
           </div>
           {typeof listIdades !== 'undefined' &&
             listIdades.map(value => {
-              return <h1>OLA</h1>
+              return (
+                <Card
+                  key={value.id}
+                  listIdades={listIdades}
+                  setListIdades={setListIdades}
+                  id={value.id}
+                  idade={value.Idade}
+                  idade1={value.idade1}
+                >
+                  OLA
+                </Card>
+              )
             })}
         </div>
       </div>
