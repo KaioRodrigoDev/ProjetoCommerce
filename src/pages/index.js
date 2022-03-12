@@ -3,7 +3,8 @@ export default function Home() {
     <>
       <div>
         <div>
-          <h1 className="text-center">Loja</h1>
+          <h1 className="font-black">Loja</h1>
+          <p>Loja</p>
         </div>
       </div>
     </>

@@ -423,10 +423,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   display: none;
 }
 
-html {
-  font-family: Proxima Nova, system-ui, sans-serif;
-}
-
 *, ::before, ::after {
   --tw-translate-x: 0;
   --tw-translate-y: 0;
@@ -472,16 +468,48 @@ html {
   --tw-backdrop-sepia:  ;
 }
 
+.static {
+  position: static;
+}
+
+.box-content {
+  box-sizing: content-box;
+}
+
 .flex {
   display: flex;
+}
+
+.w-full {
+  width: 100%;
 }
 
 .w-64 {
   width: 16rem;
 }
 
+.max-w-\[10\%\] {
+  max-width: 10%;
+}
+
+.max-w-\[30\%\] {
+  max-width: 30%;
+}
+
+.place-content-center {
+  place-content: center;
+}
+
 .place-content-around {
   place-content: space-around;
+}
+
+.content-center {
+  align-content: center;
+}
+
+.justify-end {
+  justify-content: flex-end;
 }
 
 .justify-center {
@@ -492,6 +520,18 @@ html {
   --tw-space-x-reverse: 0;
   margin-right: calc(1.5rem * var(--tw-space-x-reverse));
   margin-left: calc(1.5rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
+.space-x-4 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(1rem * var(--tw-space-x-reverse));
+  margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
+.space-x-px > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(1px * var(--tw-space-x-reverse));
+  margin-left: calc(1px * calc(1 - var(--tw-space-x-reverse)));
 }
 
 .border-2 {
