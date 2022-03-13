@@ -2,7 +2,7 @@ import Axios from 'axios'
 import { useState, useEffect } from 'react'
 import Card from '../../components/Card'
 import Dialog from '../../components/Dialog'
-export default function sobre() {
+export default function Sobre() {
   //
   //
   const [value, setValue] = useState()

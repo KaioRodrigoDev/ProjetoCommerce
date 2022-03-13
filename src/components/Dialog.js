@@ -1,7 +1,22 @@
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState } from 'react'
+import axios from 'axios'
 
 export default function MyModal(props) {
+  const [editValue, setEditValue] = useState({
+    id: props.id,
+    idade: props.idade,
+    idade1: props.idade1
+  })
+
+  const handleEditIdade = () => {
+    axios.put('http://localhost:3001/edit', {
+      id: editValue.id,
+      idade: editValue.idade,
+      idade1: editValue.idade1
+    })
+  }
+
   function closeModal() {
     props.setIsOpen(false)
   }
@@ -10,12 +25,19 @@ export default function MyModal(props) {
     props.setIsOpen(true)
   }
 
+  const handleChangeValue = value => {
+    setEditValue(prevValue => ({
+      ...prevValue,
+      [value.target.id]: value.target.value
+    }))
+  }
+
   return (
     <>
       <Transition appear show={props.isOpen} as={Fragment}>
         <Dialog
           as="div"
-          className="fixed inset-0 z-10 overflow-y-auto"
+          className="fixed inset-0 z-10 overflow-y-auto backdrop-blur-sm"
           onClose={closeModal}
         >
           <div className="min-h-screen px-4 text-center">
@@ -55,14 +77,32 @@ export default function MyModal(props) {
                   Payment successful
                 </Dialog.Title>
                 <div className="mt-2">
-                  <p className="text-sm text-gray-500">P</p>
+                  <p className="text-sm text-gray-500">{props.idade}</p>
+                  <input
+                    type="text"
+                    name="idade"
+                    id="idade"
+                    className="focus:ring-rose-500 focus:border-rose-500 shadow-sm  pl-7 pr-12 sm:text-sm border-gray-300 rounded-md py-2 "
+                    onChange={handleChangeValue}
+                    placeholder="idade"
+                    defaultValue={props.idade}
+                  />
+                  <input
+                    type="text"
+                    name="idade1"
+                    id="idade1"
+                    className="focus:ring-rose-500 focus:border-rose-500 shadow-sm  pl-7 pr-12 sm:text-sm border-gray-300 rounded-md py-2 "
+                    onChange={handleChangeValue}
+                    placeholder="idade1"
+                    defaultValue={props.idade1}
+                  />
                 </div>
 
                 <div className="mt-4">
                   <button
                     type="button"
                     className="inline-flex justify-center px-4 py-2 text-sm font-medium text-blue-900 bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
-                    onClick={closeModal}
+                    onClick={handleEditIdade}
                   >
                     Got it, thanks!
                   </button>
