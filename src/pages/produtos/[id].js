@@ -93,9 +93,9 @@ export default function Example() {
         {/* Image gallery */}
 
         {/* Product info */}
-        <div className="max-w-2xl mx-auto pt-10 pb-16 px-4 sm:px-6 lg:max-w-7xl lg:pt-16 lg:pb-24 lg:px-8 lg:grid lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8">
+        <div className="max-w-2xl mx-auto pt-10 pb-16 px-4 sm:px-6 lg:max-w-7xl lg:pt-16 lg:pb-24 lg:px-8 lg:grid lg:grid-flow-col lg:grid-rows-[auto,auto,1fr] lg:gap-x-8">
           <div className="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
-            <div className="mt-6 max-w-2xl mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-3 lg:gap-x-8">
+            <div className="mt-6 max-w-2xl mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:gap-x-8">
               <div className="hidden aspect-w-3 aspect-h-4 rounded-lg overflow-hidden lg:block">
                 <img
                   src={product.images[0].src}
@@ -103,7 +103,6 @@ export default function Example() {
                   className="w-full h-full object-center object-cover"
                 />
               </div>
-
               <div className="aspect-w-4 aspect-h-5 sm:rounded-lg sm:overflow-hidden lg:aspect-w-3 lg:aspect-h-4">
                 <img
                   src={product.images[3].src}
@@ -112,15 +111,15 @@ export default function Example() {
                 />
               </div>
             </div>
-            <h1 className="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">
-              {product.name}
-            </h1>
           </div>
 
           {/* Options */}
           <div className="mt-4 lg:mt-0 lg:row-span-3">
+            <h1 className="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">
+              {product.name}
+            </h1>
             <h2 className="sr-only">Product information</h2>
-            <p className="text-3xl text-gray-900">{product.price}</p>
+            <p className="text-2xl text-gray-900">{product.price}</p>
 
             {/* Reviews */}
             <div className="mt-6">
@@ -153,7 +152,7 @@ export default function Example() {
             <form className="mt-10">
               {/* Colors */}
               <div>
-                <h3 className="text-sm text-gray-900 font-medium">Color</h3>
+                <h3 className="text-sm text-gray-900 font-medium">Cores</h3>
 
                 <RadioGroup
                   value={selectedColor}
@@ -161,7 +160,7 @@ export default function Example() {
                   className="mt-4"
                 >
                   <RadioGroup.Label className="sr-only">
-                    Choose a color
+                    Escolha uma cor
                   </RadioGroup.Label>
                   <div className="flex items-center space-x-3">
                     {product.colors.map(color => (
@@ -196,12 +195,12 @@ export default function Example() {
               {/* Sizes */}
               <div className="mt-10">
                 <div className="flex items-center justify-between">
-                  <h3 className="text-sm text-gray-900 font-medium">Size</h3>
+                  <h3 className="text-sm text-gray-900 font-medium">Tamanho</h3>
                   <a
                     href="#"
                     className="text-sm font-medium text-indigo-600 hover:text-indigo-500"
                   >
-                    Size guide
+                    Guia de Tamanho
                   </a>
                 </div>
 
@@ -211,7 +210,7 @@ export default function Example() {
                   className="mt-4"
                 >
                   <RadioGroup.Label className="sr-only">
-                    Choose a size
+                    Escolha um tamanho
                   </RadioGroup.Label>
                   <div className="grid grid-cols-4 gap-4 sm:grid-cols-8 lg:grid-cols-4">
                     {product.sizes.map(size => (
@@ -280,40 +279,46 @@ export default function Example() {
               >
                 Add to bag
               </button>
+              <div className="py-10 lg:pt-6 lg:pb-16 lg:col-start-1 lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
+                {/* Description and details */}
+                <div>
+                  <h3 className="sr-only">Description</h3>
+
+                  <div className="space-y-6">
+                    <p className="text-base text-gray-900">
+                      {product.description}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="mt-10">
+                  <h3 className="text-sm font-medium text-gray-900">
+                    Highlights
+                  </h3>
+
+                  <div className="mt-4">
+                    <ul
+                      role="list"
+                      className="pl-4 list-disc text-sm space-y-2"
+                    >
+                      {product.highlights.map(highlight => (
+                        <li key={highlight} className="text-gray-400">
+                          <span className="text-gray-600">{highlight}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="mt-10">
+                  <h2 className="text-sm font-medium text-gray-900">Details</h2>
+
+                  <div className="mt-4 space-y-6">
+                    <p className="text-sm text-gray-600">{product.details}</p>
+                  </div>
+                </div>
+              </div>
             </form>
-          </div>
-
-          <div className="py-10 lg:pt-6 lg:pb-16 lg:col-start-1 lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
-            {/* Description and details */}
-            <div>
-              <h3 className="sr-only">Description</h3>
-
-              <div className="space-y-6">
-                <p className="text-base text-gray-900">{product.description}</p>
-              </div>
-            </div>
-
-            <div className="mt-10">
-              <h3 className="text-sm font-medium text-gray-900">Highlights</h3>
-
-              <div className="mt-4">
-                <ul role="list" className="pl-4 list-disc text-sm space-y-2">
-                  {product.highlights.map(highlight => (
-                    <li key={highlight} className="text-gray-400">
-                      <span className="text-gray-600">{highlight}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-
-            <div className="mt-10">
-              <h2 className="text-sm font-medium text-gray-900">Details</h2>
-
-              <div className="mt-4 space-y-6">
-                <p className="text-sm text-gray-600">{product.details}</p>
-              </div>
-            </div>
           </div>
         </div>
       </div>
