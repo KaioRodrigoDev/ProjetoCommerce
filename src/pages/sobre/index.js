@@ -37,27 +37,32 @@ export default function Sobre() {
         <div className="">
           <div>
             <h1 className="flex font-black justify-center">Sobre</h1>
+            <h1 className="flex font-black justify-center pt-4">
+              Adicione Novo
+            </h1>
           </div>
           <div className="flex flex-col">
+            <p className="font-black text-xs">Idade</p>
             <input
               type="number"
               name="Idade"
               onChange={handlechangevalues}
-              className="border-2"
+              className="border-2 border-gray-800"
             />
+            <p className="font-black text-xs mt-4">Idade 1</p>
             <input
               type="number"
               name="Idade1"
               onChange={handlechangevalues}
-              className="border-2"
+              className="border-2 border-gray-800 "
             />
           </div>
           <div className="text-center">
             <button
-              className="mt-4 bg-slate-600 p-2 w-28 rounded-lg text-slate-200 "
+              className="text-sm mt-4 bg-slate-600 p-2 w-28 rounded-lg text-slate-100 "
               onClick={handleClickButton}
             >
-              Send
+              Adicionar
             </button>
           </div>
           {typeof listIdades !== 'undefined' &&

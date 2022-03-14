@@ -37,7 +37,7 @@ export default function MyModal(props) {
       <Transition appear show={props.isOpen} as={Fragment}>
         <Dialog
           as="div"
-          className="fixed inset-0 z-10 overflow-y-auto backdrop-blur-sm"
+          className="fixed inset-0 z-10 overflow-y-auto backdrop-blur-sm bg-sky-200  "
           onClose={closeModal}
         >
           <div className="min-h-screen px-4 text-center">
@@ -69,12 +69,12 @@ export default function MyModal(props) {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-center align-middle transition-all transform bg-white shadow-xl rounded-2xl">
+              <div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-center align-middle transition-all transform bg-white shadow-xl rounded-2xl ">
                 <Dialog.Title
                   as="h3"
                   className="text-lg font-medium leading-6 text-gray-900"
                 >
-                  Payment successful
+                  Edite as informações
                 </Dialog.Title>
                 <div className="mt-2">
                   <p className="text-sm text-gray-500">{props.idade}</p>
@@ -82,7 +82,7 @@ export default function MyModal(props) {
                     type="text"
                     name="idade"
                     id="idade"
-                    className="focus:ring-rose-500 focus:border-rose-500 shadow-sm  pl-7 pr-12 sm:text-sm border-gray-300 rounded-md py-2 "
+                    className=" shadow-sm  pl-7 pr-12 sm:text-sm border-solid border-2 border-gray-800 rounded-md py-2 "
                     onChange={handleChangeValue}
                     placeholder="idade"
                     defaultValue={props.idade}
@@ -91,7 +91,7 @@ export default function MyModal(props) {
                     type="text"
                     name="idade1"
                     id="idade1"
-                    className="focus:ring-rose-500 focus:border-rose-500 shadow-sm  pl-7 pr-12 sm:text-sm border-gray-300 rounded-md py-2 "
+                    className="shadow-sm  pl-7 pr-12 sm:text-sm border-solid border-2 border-gray-800 rounded-md py-2 mt-4 "
                     onChange={handleChangeValue}
                     placeholder="idade1"
                     defaultValue={props.idade1}
