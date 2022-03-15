@@ -284,7 +284,7 @@ export default function Example() {
               >
                 Add to bag
               </button>
-              <div className="py-10 lg:pt-6 lg:pb-16 lg:col-start-1 lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
+              <div className="py-10 lg:pt-6 lg:pb-16 lg:col-start-1 lg:col-span-2 lg:border-gray-200 lg:pl-0">
                 {/* Description and details */}
                 <div>
                   <h3 className="sr-only">Description</h3>
