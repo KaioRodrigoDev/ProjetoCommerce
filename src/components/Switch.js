@@ -4,10 +4,15 @@ import { Switch } from '@headlessui/react'
 export default function MyToggle() {
   const [enabled, setEnabled] = useState(false)
 
+  function DarkMode() {
+    dark = false
+  }
+
   return (
     <Switch
       checked={enabled}
       onChange={setEnabled}
+      onClick={DarkMode}
       className={`${
         enabled ? 'bg-teal-900' : 'bg-teal-700'
       } relative inline-flex items-center h-6 rounded-full w-11 ease-in-out duration-200`}
