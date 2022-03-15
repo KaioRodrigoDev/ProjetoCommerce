@@ -88,11 +88,9 @@ export default function Example() {
   const [selectedSize, setSelectedSize] = useState(product.sizes[2])
 
   return (
-    <div className="bg-white">
+    <div className="bg-white dark:bg-slate-900">
       <div className="pt-6">
         {/* Image gallery */}
-
-        {/* Product info */}
         <div className="max-w-2xl mx-auto pt-10 pb-16 px-4 sm:px-6 lg:max-w-7xl lg:pt-16 lg:pb-24 lg:px-8 lg:grid lg:grid-flow-col lg:grid-rows-[auto,auto,1fr] lg:gap-x-8">
           <div className="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
             <div className="mt-6 max-w-2xl mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:gap-x-8">
@@ -113,13 +111,16 @@ export default function Example() {
             </div>
           </div>
 
+          {/* Product info */}
           {/* Options */}
           <div className="mt-4 lg:mt-0 lg:row-span-3">
-            <h1 className="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">
+            <h1 className="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl dark:text-slate-100">
               {product.name}
             </h1>
             <h2 className="sr-only">Product information</h2>
-            <p className="text-2xl text-gray-900">{product.price}</p>
+            <p className="text-2xl text-gray-900 dark:text-slate-300">
+              {product.price}
+            </p>
 
             {/* Reviews */}
             <div className="mt-6">
@@ -131,8 +132,8 @@ export default function Example() {
                       key={rating}
                       className={classNames(
                         reviews.average > rating
-                          ? 'text-gray-900'
-                          : 'text-gray-200',
+                          ? 'text-gray-900 dark:text-slate-300'
+                          : 'text-gray-200 dark:text-slate-800',
                         'h-5 w-5 flex-shrink-0'
                       )}
                       aria-hidden="true"
@@ -152,17 +153,19 @@ export default function Example() {
             <form className="mt-10">
               {/* Colors */}
               <div>
-                <h3 className="text-sm text-gray-900 font-medium">Cores</h3>
+                <h3 className="text-sm text-gray-900 font-medium dark:text-slate-300">
+                  Cores
+                </h3>
 
                 <RadioGroup
                   value={selectedColor}
                   onChange={setSelectedColor}
                   className="mt-4"
                 >
-                  <RadioGroup.Label className="sr-only">
+                  <RadioGroup.Label className="sr-only dark:text-slate-300">
                     Escolha uma cor
                   </RadioGroup.Label>
-                  <div className="flex items-center space-x-3">
+                  <div className="flex items-center space-x-3 ">
                     {product.colors.map(color => (
                       <RadioGroup.Option
                         key={color.name}
@@ -172,7 +175,7 @@ export default function Example() {
                             color.selectedClass,
                             active && checked ? 'ring ring-offset-1' : '',
                             !active && checked ? 'ring-2' : '',
-                            '-m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none'
+                            '-m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none '
                           )
                         }
                       >
@@ -183,7 +186,7 @@ export default function Example() {
                           aria-hidden="true"
                           className={classNames(
                             color.class,
-                            'h-8 w-8 border border-black border-opacity-10 rounded-full'
+                            'h-8 w-8 border border-black border-opacity-10 rounded-full '
                           )}
                         />
                       </RadioGroup.Option>
@@ -195,10 +198,12 @@ export default function Example() {
               {/* Sizes */}
               <div className="mt-10">
                 <div className="flex items-center justify-between">
-                  <h3 className="text-sm text-gray-900 font-medium">Tamanho</h3>
+                  <h3 className="text-sm text-gray-900 font-medium dark:text-slate-300">
+                    Tamanho
+                  </h3>
                   <a
                     href="#"
-                    className="text-sm font-medium text-indigo-600 hover:text-indigo-500"
+                    className="text-sm font-medium text-indigo-600 hover:text-indigo-500 dark:text-slate-300"
                   >
                     Guia de Tamanho
                   </a>
@@ -221,10 +226,10 @@ export default function Example() {
                         className={({ active }) =>
                           classNames(
                             size.inStock
-                              ? 'bg-white shadow-sm text-gray-900 cursor-pointer'
-                              : 'bg-gray-50 text-gray-200 cursor-not-allowed',
+                              ? 'bg-white shadow-sm text-gray-900 cursor-pointer dark:text-gray-200'
+                              : 'bg-gray-50 text-gray-200 cursor-not-allowed dark:text-gray-900',
                             active ? 'ring-2 ring-indigo-500' : '',
-                            'group relative border rounded-md py-3 px-4 flex items-center justify-center text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6'
+                            'group relative border rounded-md py-3 px-4 flex items-center justify-center text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6 dark:bg-slate-900 dark:hover:bg-gray-800'
                           )
                         }
                       >
@@ -285,14 +290,14 @@ export default function Example() {
                   <h3 className="sr-only">Description</h3>
 
                   <div className="space-y-6">
-                    <p className="text-base text-gray-900">
+                    <p className="text-base text-gray-900 dark:text-slate-300">
                       {product.description}
                     </p>
                   </div>
                 </div>
 
                 <div className="mt-10">
-                  <h3 className="text-sm font-medium text-gray-900">
+                  <h3 className="text-sm font-medium text-gray-900 dark:text-slate-300">
                     Highlights
                   </h3>
 
@@ -303,7 +308,9 @@ export default function Example() {
                     >
                       {product.highlights.map(highlight => (
                         <li key={highlight} className="text-gray-400">
-                          <span className="text-gray-600">{highlight}</span>
+                          <span className="text-gray-600 dark:text-slate-400">
+                            {highlight}
+                          </span>
                         </li>
                       ))}
                     </ul>
@@ -311,10 +318,14 @@ export default function Example() {
                 </div>
 
                 <div className="mt-10">
-                  <h2 className="text-sm font-medium text-gray-900">Details</h2>
+                  <h2 className="text-sm font-medium text-gray-900 dark:text-slate-300">
+                    Details
+                  </h2>
 
                   <div className="mt-4 space-y-6">
-                    <p className="text-sm text-gray-600">{product.details}</p>
+                    <p className="text-sm text-gray-600 dark:text-slate-400">
+                      {product.details}
+                    </p>
                   </div>
                 </div>
               </div>
