@@ -57,14 +57,11 @@ const product = {
     { name: 'Black', class: 'bg-gray-900', selectedClass: 'ring-gray-900' }
   ],
   sizes: [
-    { name: 'XXS', inStock: false },
-    { name: 'XS', inStock: true },
-    { name: 'S', inStock: true },
+    { name: 'PP', inStock: false },
+    { name: 'P', inStock: true },
     { name: 'M', inStock: true },
-    { name: 'L', inStock: true },
-    { name: 'XL', inStock: true },
-    { name: '2XL', inStock: true },
-    { name: '3XL', inStock: true }
+    { name: 'G', inStock: true },
+    { name: 'GG', inStock: true }
   ],
   description:
     'The Basic Tee 6-Pack allows you to fully express your vibrant personality with three grayscale options. Feeling adventurous? Put on a heather gray tee. Want to be a trendsetter? Try our exclusive colorway: "Black". Need to add an extra pop of color to your outfit? Our white tee has you covered.',
@@ -227,7 +224,7 @@ export default function Example() {
                           classNames(
                             size.inStock
                               ? 'bg-white shadow-sm text-gray-900 cursor-pointer dark:text-gray-200'
-                              : 'bg-gray-50 text-gray-200 cursor-not-allowed dark:text-gray-900',
+                              : 'bg-gray-50 text-gray-200 cursor-not-allowed dark:text-gray-600',
                             active ? 'ring-2 ring-indigo-500' : '',
                             'group relative border rounded-md py-3 px-4 flex items-center justify-center text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6 dark:bg-slate-900 dark:hover:bg-gray-800'
                           )

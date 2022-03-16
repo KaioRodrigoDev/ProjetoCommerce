@@ -1452,9 +1452,19 @@ Ensure the default browser behavior of the `hidden` attribute.
     color: rgb(229 231 235 / var(--tw-text-opacity));
   }
 
-  .dark\:text-gray-900 {
+  .dark\:text-gray-800 {
     --tw-text-opacity: 1;
-    color: rgb(17 24 39 / var(--tw-text-opacity));
+    color: rgb(31 41 55 / var(--tw-text-opacity));
+  }
+
+  .dark\:text-gray-600 {
+    --tw-text-opacity: 1;
+    color: rgb(75 85 99 / var(--tw-text-opacity));
+  }
+
+  .dark\:text-gray-500 {
+    --tw-text-opacity: 1;
+    color: rgb(107 114 128 / var(--tw-text-opacity));
   }
 
   .dark\:hover\:bg-gray-800:hover {
@@ -1591,16 +1601,8 @@ Ensure the default browser behavior of the `hidden` attribute.
          column-gap: 2rem;
   }
 
-  .lg\:border {
-    border-width: 1px;
-  }
-
   .lg\:border-r {
     border-right-width: 1px;
-  }
-
-  .lg\:border-l {
-    border-left-width: 1px;
   }
 
   .lg\:border-gray-200 {
@@ -1631,10 +1633,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
   .lg\:pb-16 {
     padding-bottom: 4rem;
-  }
-
-  .lg\:pl-8 {
-    padding-left: 2rem;
   }
 
   .lg\:pl-0 {
