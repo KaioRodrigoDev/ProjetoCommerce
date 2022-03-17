@@ -10,10 +10,10 @@ export default function MyModal(props) {
   })
 
   const handleEditIdade = () => {
-    axios.put('http://localhost:3001/edit', {
+    axios.put('http://localhost:3001/editProduct', {
       id: editValue.id,
-      idade: editValue.idade,
-      idade1: editValue.idade1
+      nome: editValue.nome,
+      preco: editValue.preco
     })
   }
 
@@ -77,24 +77,25 @@ export default function MyModal(props) {
                   Edite as informações
                 </Dialog.Title>
                 <div className="mt-2">
-                  <p className="text-sm text-gray-500">{props.idade}</p>
+                  <p className="text-sm text-gray-500">Produto:{props.nome}</p>
+                  <p className="text-sm text-gray-500">Preço:{props.preco}$</p>
                   <input
                     type="text"
-                    name="idade"
-                    id="idade"
+                    name="nome"
+                    id="nome"
                     className=" shadow-sm  pl-7 pr-12 sm:text-sm border-solid border-2 border-gray-800 rounded-md py-2 "
                     onChange={handleChangeValue}
-                    placeholder="idade"
-                    defaultValue={props.idade}
+                    placeholder="Produto"
+                    defaultValue={props.nome}
                   />
                   <input
                     type="text"
-                    name="idade1"
-                    id="idade1"
+                    name="preco"
+                    id="preco"
                     className="shadow-sm  pl-7 pr-12 sm:text-sm border-solid border-2 border-gray-800 rounded-md py-2 mt-4 "
                     onChange={handleChangeValue}
-                    placeholder="idade1"
-                    defaultValue={props.idade1}
+                    placeholder="Preço"
+                    defaultValue={props.preco}
                   />
                 </div>
 

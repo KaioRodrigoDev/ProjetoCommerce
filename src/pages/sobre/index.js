@@ -6,8 +6,8 @@ export default function Sobre() {
   //
   //
   const [value, setValue] = useState()
-  const [listIdades, setListIdades] = useState()
-  console.log(listIdades)
+  const [listProdutos, setListProdutos] = useState()
+  console.log(listProdutos)
   const handlechangevalues = value => {
     setValue(prevValue => ({
       ...prevValue,
@@ -16,7 +16,7 @@ export default function Sobre() {
   }
 
   const handleClickButton = () => {
-    Axios.post('http://localhost:3001/register', {
+    Axios.post('http://localhost:3001/newProduct', {
       Idade: value.Idade,
       Idade1: value.Idade1
     }).then(response => {
@@ -25,9 +25,9 @@ export default function Sobre() {
   }
 
   useEffect(() => {
-    Axios.get('http://localhost:3001/getIdade').then(response => {
+    Axios.get('http://localhost:3001/getProducts').then(response => {
       console.log(response)
-      setListIdades(response.data)
+      setListProdutos(response.data)
     })
   }, [])
 
@@ -111,19 +111,17 @@ export default function Sobre() {
               NEW ITEM
             </button>
           </div>
-          {typeof listIdades !== 'undefined' &&
-            listIdades.map(value => {
+          {typeof listProdutos !== 'undefined' &&
+            listProdutos.map(product => {
               return (
                 <Card
-                  key={value.id}
-                  listIdades={listIdades}
-                  setListIdades={setListIdades}
-                  id={value.id}
-                  idade={value.Idade}
-                  idade1={value.idade1}
-                >
-                  OLA
-                </Card>
+                  key={product.id}
+                  listProdutos={listProdutos}
+                  setListIdades={listProdutos}
+                  id={product.id}
+                  nome={product.nome}
+                  preco={product.preco}
+                ></Card>
               )
             })}
         </div>

@@ -4,11 +4,13 @@ import axios from 'axios'
 
 export default function MyModal(props) {
   const [newproduct, setNewProduct] = useState()
+  const [tamanhos, setTamanhos] = useState()
 
   const handleEditIdade = () => {
     axios
-      .post('http://localhost:3001/register', {
+      .post('http://localhost:3001/newProduct', {
         nome: newproduct.nome,
+        preco: newproduct.preco,
         imagem: newproduct.imagem,
         cores: newproduct.cores,
         tamanhos: newproduct.tamanhos,
@@ -88,6 +90,13 @@ export default function MyModal(props) {
                       onChange={handleChangeValue}
                       className="border-2 border-gray-800"
                     />
+                    <p className="font-black text-xs mt-4">Preço</p>
+                    <input
+                      type="text"
+                      name="preco"
+                      onChange={handleChangeValue}
+                      className="border-2 border-gray-800"
+                    />
                     <p className="font-black text-xs mt-2 ">imagem</p>
                     <input
                       type="text"
@@ -127,6 +136,27 @@ export default function MyModal(props) {
                       onChange={handleChangeValue}
                       className="border-2 border-gray-800 "
                     />
+                  </div>
+                  <div>
+                    <div className="form-group">
+                      <input type="checkbox" name="items[]" value="Cadeiras" />
+                    </div>
+                    <div class="form-group">
+                      <input type="checkbox" name="items[]" value="Palco" />
+                    </div>
+                    <div class="form-group">
+                      <input
+                        type="checkbox"
+                        name="items[]"
+                        value="Cerveja gratis"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <input type="checkbox" name="items[]" value="Open Food" />
+                    </div>
+                    <div class="form-group">
+                      <input type="checkbox" name="items[]" value="Brindes" />
+                    </div>
                   </div>
                 </div>
 
