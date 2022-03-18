@@ -2,6 +2,7 @@ import Axios from 'axios'
 import { useState, useEffect } from 'react'
 import Card from '../../components/Card'
 import NewProduct from '../../components/NewProduct'
+
 export default function Sobre() {
   //
   //

@@ -5,8 +5,8 @@ import axios from 'axios'
 export default function MyModal(props) {
   const [editValue, setEditValue] = useState({
     id: props.id,
-    idade: props.idade,
-    idade1: props.idade1
+    nome: props.nome,
+    preco: props.preco
   })
 
   const handleEditIdade = () => {

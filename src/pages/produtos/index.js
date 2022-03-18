@@ -14,6 +14,9 @@
   }
   ```
 */
+import { useState, useEffect } from 'react'
+import axios from 'axios'
+
 const products = [
   {
     id: 1,
@@ -29,6 +32,13 @@ const products = [
 ]
 
 export default function Produtos() {
+  const [listProdutos, setListProdutos] = useState()
+  useEffect(() => {
+    axios.get('http://localhost:3001/getProducts').then(response => {
+      console.log(response)
+      setListProdutos(response.data)
+    })
+  }, [])
   return (
     <div className="bg-white dark:h-screen dark:bg-slate-900">
       <div className="max-w-2xl mx-auto  px-4 sm:py-10 sm:px-6 lg:max-w-7xl lg:px-8">

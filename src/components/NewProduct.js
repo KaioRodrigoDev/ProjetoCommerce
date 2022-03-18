@@ -13,7 +13,7 @@ export default function MyModal(props) {
         preco: newproduct.preco,
         imagem: newproduct.imagem,
         cores: newproduct.cores,
-        tamanhos: newproduct.tamanhos,
+        tamanhos: tamanhos,
         descricao: newproduct.descricao,
         detalhes: newproduct.detalhes
       })
@@ -141,20 +141,20 @@ export default function MyModal(props) {
                     <div className="form-group">
                       <input type="checkbox" name="items[]" value="Cadeiras" />
                     </div>
-                    <div class="form-group">
+                    <div className="form-group">
                       <input type="checkbox" name="items[]" value="Palco" />
                     </div>
-                    <div class="form-group">
+                    <div className="form-group">
                       <input
                         type="checkbox"
                         name="items[]"
                         value="Cerveja gratis"
                       />
                     </div>
-                    <div class="form-group">
+                    <div className="form-group">
                       <input type="checkbox" name="items[]" value="Open Food" />
                     </div>
-                    <div class="form-group">
+                    <div className="form-group">
                       <input type="checkbox" name="items[]" value="Brindes" />
                     </div>
                   </div>
