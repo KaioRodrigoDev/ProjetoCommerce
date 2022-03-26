@@ -27,7 +27,7 @@ export default function Sobre() {
 
   useEffect(() => {
     Axios.get('http://localhost:3001/getProducts').then(response => {
-      console.log(response)
+      console.log(response.data)
       setListProdutos(response.data)
     })
   }, [])
