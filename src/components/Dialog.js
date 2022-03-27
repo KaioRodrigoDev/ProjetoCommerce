@@ -37,7 +37,7 @@ export default function MyModal(props) {
       <Transition appear show={props.isOpen} as={Fragment}>
         <Dialog
           as="div"
-          className="fixed inset-0 z-10 overflow-y-auto backdrop-blur-sm bg-sky-200  "
+          className="fixed inset-0 z-10 overflow-y-auto backdrop-blur-sm bg-sky-200 dark:bg-gray-900 "
           onClose={closeModal}
         >
           <div className="min-h-screen px-4 text-center">

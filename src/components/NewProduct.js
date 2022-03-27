@@ -113,6 +113,7 @@ export default function MyModal(props) {
                       onChange={handleChangeValue}
                       className="border-2 border-gray-800 "
                     />
+
                     <p className="font-black text-xs mt-2">Tamanhos</p>
                     <input
                       type="text"

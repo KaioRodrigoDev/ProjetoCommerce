@@ -16,15 +16,6 @@ export default function Sobre() {
     }))
   }
 
-  const handleClickButton = () => {
-    Axios.post('http://localhost:3001/newProduct', {
-      Idade: value.Idade,
-      Idade1: value.Idade1
-    }).then(response => {
-      console.log(response)
-    })
-  }
-
   useEffect(() => {
     Axios.get('http://localhost:3001/getProducts').then(response => {
       console.log(response.data)
@@ -39,7 +30,7 @@ export default function Sobre() {
 
   return (
     <>
-      <div className="flex justify-center">
+      <div className="flex justify-center dark:bg-slate-900 dark:text-slate-200">
         <div className="flex-col text-center">
           <div>
             <h1 className="flex font-black justify-center">Sobre</h1>
