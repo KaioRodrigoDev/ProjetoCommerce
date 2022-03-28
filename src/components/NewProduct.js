@@ -42,7 +42,7 @@ export default function MyModal(props) {
       <Transition appear show={props.isOpen} as={Fragment}>
         <Dialog
           as="div"
-          className="fixed inset-0 z-10 overflow-y-auto backdrop-blur-sm bg-sky-200  "
+          className="fixed inset-0 z-10 overflow-y-auto backdrop-blur-sm bg-sky-200 dark:bg-slate-900 "
           onClose={closeModal}
         >
           <div className="min-h-screen px-4 text-center">
@@ -74,7 +74,7 @@ export default function MyModal(props) {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-center align-middle transition-all transform bg-white shadow-xl rounded-2xl ">
+              <div className=" inline-block w-full max-w-md p-6 my-8 overflow-hidden text-center align-middle transition-all transform bg-white shadow-xl rounded-2xl ">
                 <Dialog.Title
                   as="h3"
                   className="text-lg font-medium leading-6 text-gray-900"
@@ -90,7 +90,7 @@ export default function MyModal(props) {
                       onChange={handleChangeValue}
                       className="border-2 border-gray-800"
                     />
-                    <p className="font-black text-xs mt-4">Preço</p>
+                    <p className="font-black text-xs mt-2">Preço</p>
                     <input
                       type="text"
                       name="preco"
@@ -134,6 +134,13 @@ export default function MyModal(props) {
                     <input
                       type="text"
                       name="detalhes"
+                      onChange={handleChangeValue}
+                      className="border-2 border-gray-800 "
+                    />
+                    <p className="font-black text-xs mt-2">Categorias</p>
+                    <input
+                      type="text"
+                      name="categorias"
                       onChange={handleChangeValue}
                       className="border-2 border-gray-800 "
                     />
