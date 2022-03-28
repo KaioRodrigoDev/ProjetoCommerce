@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -71,9 +72,9 @@ export default function Register() {
                     </div>
                     <span className="text-xs dark:text-slate-400">
                       Não possui conta ?
-                      <a className="dark:text-slate-200" href="/register">
+                      <Link className="dark:text-slate-200" href="/register">
                         Crie sua conta
-                      </a>
+                      </Link>
                     </span>
                     <div className="mt-4">
                       <button
