@@ -33,9 +33,6 @@ export default function Sobre() {
       <div className="min-h-screen flex justify-center dark:bg-slate-900 dark:text-slate-200">
         <div className="flex-col ">
           <div className="text-center ">
-            <h1 className="flex font-black justify-center pt-4">
-              Adicione Novo
-            </h1>
             <button
               className=" text-sm mt-4 bg-slate-600 p-2 w-28 rounded-lg text-slate-100 "
               onClick={NProduct}

@@ -4,7 +4,6 @@ import axios from 'axios'
 
 export default function MyModal(props) {
   const [newproduct, setNewProduct] = useState()
-  const [tamanhos, setTamanhos] = useState()
 
   const handleEditIdade = () => {
     axios
@@ -15,6 +14,7 @@ export default function MyModal(props) {
         cores: newproduct.cores,
         tamanhos: newproduct.tamanhos,
         descricao: newproduct.descricao,
+        categorias: newproduct.categorias,
         detalhes: newproduct.detalhes
       })
       .then(response => {
