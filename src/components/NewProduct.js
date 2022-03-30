@@ -99,7 +99,7 @@ export default function MyModal(props) {
                     />
                     <p className="font-black text-xs mt-2 ">imagem</p>
                     <input
-                      type="text"
+                      type="file"
                       name="imagem"
                       onChange={handleChangeValue}
                       className="border-2 border-gray-800 "
