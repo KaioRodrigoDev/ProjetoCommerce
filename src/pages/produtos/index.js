@@ -200,6 +200,7 @@ export default function Example() {
                           </span>
                         </Disclosure.Button>
                       </h3>
+
                       <Disclosure.Panel className="pt-6">
                         <div className="space-y-6">
                           {section.options.map((option, optionIdx) => (
@@ -366,7 +367,7 @@ export default function Example() {
               {/* Product grid */}
               <div className="lg:col-span-3">
                 {/* Replace with your content */}
-                <div className="bg-white dark:h-screen dark:bg-slate-900">
+                <div className="bg-white dark:min-h-screen dark:bg-slate-900">
                   <div className="max-w-2xl mx-auto  px-4 sm:py-10 sm:px-6 lg:max-w-7xl lg:px-8">
                     <h2 className="text-2xl font-extrabold tracking-tight text-gray-900">
                       Nossos Produtos
