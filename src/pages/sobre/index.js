@@ -1,20 +1,13 @@
 import Axios from 'axios'
 import { useState, useEffect } from 'react'
-import Card from '../../components/Card'
+import Card from '../../components/AdminProducts'
 import NewProduct from '../../components/NewProduct'
 
 export default function Sobre() {
   //
   //
-  const [value, setValue] = useState()
   const [listProdutos, setListProdutos] = useState()
   console.log(listProdutos)
-  const handlechangevalues = value => {
-    setValue(prevValue => ({
-      ...prevValue,
-      [value.target.name]: value.target.value
-    }))
-  }
 
   useEffect(() => {
     Axios.get('http://localhost:3001/getProducts').then(response => {
@@ -30,7 +23,7 @@ export default function Sobre() {
 
   return (
     <>
-      <div className="min-h-screen flex justify-center dark:bg-slate-900 dark:text-slate-200">
+      <div className="min-h-screen flex justify-center dark:bg-bg dark:text-slate-200">
         <div className="flex-col ">
           <div className="text-center ">
             <button

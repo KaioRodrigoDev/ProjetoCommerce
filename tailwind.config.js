@@ -5,6 +5,13 @@ module.exports = {
   theme: {
     fontFamily: {
       sans: ['Roboto', ...defaultTheme.fontFamily.sans]
+    },
+    extend: {
+      colors: {
+        bg: '#161616',
+        SecBg: '#202020',
+        principal: '#050505'
+      }
     }
   },
   plugins: []

@@ -1,6 +1,6 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { Fragment } from 'react'
-import Dialog from '../components/Dialog'
+import Dialog from './EditProduct'
 import {
   DocumentIcon,
   CalendarIcon,
@@ -18,7 +18,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Card(props) {
+export default function AdminProducts(props) {
   let [isOpen, setIsOpen] = useState(false)
 
   const openModal = () => {

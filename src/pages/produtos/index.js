@@ -1,19 +1,3 @@
-/*
-  This example requires Tailwind CSS v2.0+ 
-  
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
-*/
 import { motion } from 'framer-motion'
 
 import axios from 'axios'
@@ -50,7 +34,12 @@ const filters = [
       { value: 'white', label: 'White', checked: false },
       { value: 'beige', label: 'Beige', checked: false },
       { value: 'blue', label: 'Blue', checked: false },
-      { value: 'brown', label: 'Brown', checked: false },
+      {
+        value: 'brown',
+        label: 'Brown',
+        option: ['TRUE', 'FALSE'],
+        checked: false
+      },
       { value: 'green', label: 'Green', checked: false },
       { value: 'purple', label: 'Purple', checked: false }
     ]
@@ -67,8 +56,52 @@ const filters = [
     ]
   },
   {
-    id: 'size',
-    name: 'Size',
+    id: 'Brasileirao',
+    name: 'Brasileirão',
+    options: [
+      { value: 'new-arrivals', label: 'New Arrivals', checked: false },
+      { value: 'sale', label: 'Sale', checked: false },
+      { value: 'travel', label: 'Travel', checked: false },
+      { value: 'organization', label: 'Organization', checked: false },
+      { value: 'accessories', label: 'Accessories', checked: false }
+    ]
+  },
+  {
+    id: 'Europeus',
+    name: 'Europeus',
+    options: [
+      { value: 'new-arrivals', label: 'New Arrivals', checked: false },
+      { value: 'sale', label: 'Sale', checked: false },
+      { value: 'travel', label: 'Travel', checked: false },
+      { value: 'organization', label: 'Organization', checked: false },
+      { value: 'accessories', label: 'Accessories', checked: false }
+    ]
+  },
+  {
+    id: 'Seleções',
+    name: 'Seleções',
+    options: [
+      { value: 'new-arrivals', label: 'New Arrivals', checked: false },
+      { value: 'sale', label: 'Sale', checked: false },
+      { value: 'travel', label: 'Travel', checked: false },
+      { value: 'organization', label: 'Organization', checked: false },
+      { value: 'accessories', label: 'Accessories', checked: false }
+    ]
+  },
+  {
+    id: 'Retrô',
+    name: 'Retrô',
+    options: [
+      { value: 'new-arrivals', label: 'New Arrivals', checked: false },
+      { value: 'sale', label: 'Sale', checked: false },
+      { value: 'travel', label: 'Travel', checked: false },
+      { value: 'organization', label: 'Organization', checked: false },
+      { value: 'accessories', label: 'Accessories', checked: false }
+    ]
+  },
+  {
+    id: 'Femininas',
+    name: 'Femininas',
     options: [
       { value: '2l', label: '2L', checked: false },
       { value: '6l', label: '6L', checked: false },
@@ -137,7 +170,7 @@ export default function Example() {
   }, [])
 
   return (
-    <div className="bg-white dark:min-h-screen dark:bg-slate-900">
+    <div className="bg-white dark:min-h-screen dark:bg-bg">
       <div>
         {/* Mobile filter dialog */}
         <motion.nav
@@ -162,15 +195,6 @@ export default function Example() {
             {/* Mobile Filters */}
             <form className="mt-4 border-t border-gray-200">
               <h3 className="sr-only">Categories</h3>
-              <ul role="list" className="font-medium text-gray-900 px-2 py-3">
-                {subCategories.map(category => (
-                  <li key={category.name}>
-                    <a href={category.href} className="block px-2 py-3">
-                      {category.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
 
               {filters.map((section, key) => (
                 <Disclosure
@@ -296,16 +320,6 @@ export default function Example() {
               {/* DESKTOP Filters */}
               <form className="hidden lg:block">
                 <h3 className="sr-only">Categories</h3>
-                <ul
-                  role="list"
-                  className="text-sm font-medium space-y-4 pb-6 border-b border-gray-200"
-                >
-                  {subCategories.map(category => (
-                    <li key={category.name}>
-                      <a href={category.href}>{category.name}</a>
-                    </li>
-                  ))}
-                </ul>
 
                 {filters.map(section => (
                   <Disclosure
@@ -340,20 +354,34 @@ export default function Example() {
                                 key={option.value}
                                 className="flex items-center"
                               >
-                                <input
-                                  id={`filter-${section.id}-${optionIdx}`}
-                                  name={`${section.id}[]`}
-                                  defaultValue={option.value}
-                                  type="checkbox"
-                                  defaultChecked={option.checked}
-                                  className="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500"
-                                />
-                                <label
-                                  htmlFor={`filter-${section.id}-${optionIdx}`}
-                                  className="ml-3 text-sm text-gray-600"
-                                >
-                                  {option.label}
-                                </label>
+                                {option.option && (
+                                  <Disclosure.Button className="ml-3 w-full flex items-center justify-between text-sm text-gray-400 hover:text-gray-500 dark:text-white">
+                                    <span className="font-medium ">
+                                      {option.label}
+                                    </span>
+                                    <span className="ml-6 flex items-center">
+                                      {open ? (
+                                        <MinusSmIcon
+                                          className="h-5 w-5"
+                                          aria-hidden="true"
+                                        />
+                                      ) : (
+                                        <PlusSmIcon
+                                          className="h-5 w-5"
+                                          aria-hidden="true"
+                                        />
+                                      )}
+                                    </span>
+                                  </Disclosure.Button>
+                                )}
+                                {!option.option && (
+                                  <label
+                                    htmlFor={`filter-${section.id}-${optionIdx}`}
+                                    className="ml-3 text-sm text-gray-400"
+                                  >
+                                    <a href="/">{option.label}</a>
+                                  </label>
+                                )}
                               </div>
                             ))}
                           </div>
@@ -367,12 +395,8 @@ export default function Example() {
               {/* Product grid */}
               <div className="lg:col-span-3">
                 {/* Replace with your content */}
-                <div className="bg-white dark:min-h-screen dark:bg-slate-900">
+                <div className="">
                   <div className="max-w-2xl mx-auto  px-4 sm:py-10 sm:px-6 lg:max-w-7xl lg:px-8">
-                    <h2 className="text-2xl font-extrabold tracking-tight text-gray-900">
-                      Nossos Produtos
-                    </h2>
-
                     <div className="mt-6 grid grid-cols-2 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
                       {products.map((product, key) => (
                         <motion.product
