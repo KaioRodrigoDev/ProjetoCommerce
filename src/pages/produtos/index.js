@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 
 import axios from 'axios'
 import { Fragment, useState, useEffect } from 'react'
+import Link from 'next/link'
 import { Dialog, Disclosure, Menu, Transition } from '@headlessui/react'
 import { XIcon } from '@heroicons/react/outline'
 import {
@@ -416,13 +417,15 @@ export default function Example() {
                             <div className="mt-4 flex justify-between">
                               <div>
                                 <h3 className="text-sm text-gray-700 dark:text-slate-300">
-                                  <a href={product.href}>
-                                    <span
-                                      aria-hidden="true"
-                                      className="absolute inset-0"
-                                    />
-                                    {product.name}
-                                  </a>
+                                  <Link href={product.href}>
+                                    <a>
+                                      <span
+                                        aria-hidden="true"
+                                        className="absolute inset-0"
+                                      />
+                                      {product.name}
+                                    </a>
+                                  </Link>
                                 </h3>
                                 <p className="text-sm font-medium text-gray-900 dark:text-slate-400">
                                   {product.price}

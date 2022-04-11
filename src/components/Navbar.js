@@ -54,7 +54,7 @@ export default function Navbar() {
                     <div className="hidden md:block">
                       <div className="ml-10 flex items-baseline space-x-4">
                         {navigation.map(item => (
-                          <Link href={item.href}>
+                          <Link href={item.href} key={item.id}>
                             <a
                               key={item.name}
                               className={classNames(
@@ -100,15 +100,16 @@ export default function Navbar() {
                             {userNavigation.map(item => (
                               <Menu.Item key={item.name}>
                                 {({ active }) => (
-                                  <a
-                                    href={item.href}
-                                    className={classNames(
-                                      active ? 'bg-gray-100' : '',
-                                      'block px-4 py-2 text-sm text-gray-700'
-                                    )}
-                                  >
-                                    {item.name}
-                                  </a>
+                                  <Link href={item.href} key={item.id}>
+                                    <a
+                                      className={classNames(
+                                        active ? 'bg-gray-100' : '',
+                                        'block px-4 py-2 text-sm text-gray-700'
+                                      )}
+                                    >
+                                      {item.name}
+                                    </a>
+                                  </Link>
                                 )}
                               </Menu.Item>
                             ))}
