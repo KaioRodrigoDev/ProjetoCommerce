@@ -281,18 +281,19 @@ export default function Example() {
                       {sortOptions.map(option => (
                         <Menu.Item key={option.name}>
                           {({ active }) => (
-                            <a
-                              href={option.href}
-                              className={classNames(
-                                option.current
-                                  ? 'font-medium text-gray-900'
-                                  : 'text-gray-500',
-                                active ? 'bg-gray-100' : '',
-                                'block px-4 py-2 text-sm'
-                              )}
-                            >
-                              {option.name}
-                            </a>
+                            <Link href={option.href}>
+                              <a
+                                className={classNames(
+                                  option.current
+                                    ? 'font-medium text-gray-900'
+                                    : 'text-gray-500',
+                                  active ? 'bg-gray-100' : '',
+                                  'block px-4 py-2 text-sm'
+                                )}
+                              >
+                                {option.name}
+                              </a>
+                            </Link>
                           )}
                         </Menu.Item>
                       ))}
@@ -380,7 +381,9 @@ export default function Example() {
                                     htmlFor={`filter-${section.id}-${optionIdx}`}
                                     className="ml-3 text-sm text-gray-400"
                                   >
-                                    <a href="/">{option.label}</a>
+                                    <Link href="/">
+                                      <a>{option.label}</a>
+                                    </Link>
                                   </label>
                                 )}
                               </div>
