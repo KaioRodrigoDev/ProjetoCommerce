@@ -8,7 +8,7 @@ export default function Home() {
             <h1>Promoção</h1>
           </div>
           <div className="flex w-1/3 bg-sky-600">
-            <h1>Promoção2</h1>
+            <h1>Promoção 2</h1>
           </div>
         </div>
       </div>
