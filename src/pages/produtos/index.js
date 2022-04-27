@@ -20,12 +20,8 @@ const categories = [
 ]
 
 const variants = {
-  open: { opacity: 1, x: 0 },
-  closed: { opacity: 0, x: '-100%' }
-}
-
-function classNames(...classes) {
-  return classes.categories(Boolean).join(' ')
+  open: { opacity: 1, y: 0 },
+  closed: { opacity: 0, y: '-100%' }
 }
 
 const products = [
@@ -97,7 +93,7 @@ export default function Example() {
               <>
                 <motion.div>
                   {category.sub && (
-                    <>
+                    <div>
                       <button
                         className="w-full flex  justify-between text-sm text-gray-400 hover:text-gray-500 dark:text-white"
                         onClick={() => setIsOpen(isOpen => !isOpen)}
@@ -112,29 +108,27 @@ export default function Example() {
                         variants={variants}
                       >
                         {category.sub.map(sub => (
-                          <Menu>
-                            {({ active }) => (
-                              <Link href={sub.link}>
-                                <a
-                                  className={`${
-                                    active
-                                      ? 'absolute'
-                                      : 'block text-gray-400 hover:text-gray-500 dark:text-white'
-                                  } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
-                                >
-                                  {sub.name}
-                                </a>
-                              </Link>
-                            )}
+                          <Menu className="abolute space-y-2">
+                            <Link href={sub.link}>
+                              <a
+                                className={`${
+                                  isOpen
+                                    ? ' block text-gray-400 hover:text-gray-500 dark:text-white'
+                                    : 'hidden'
+                                } group flex rounded-md items-center w-full px-2 py-2 text-sm space-y-2`}
+                              >
+                                {sub.name}
+                              </a>
+                            </Link>
                           </Menu>
                         ))}
                       </motion.div>
-                    </>
+                    </div>
                   )}
 
                   {!category.sub && (
                     <h1>
-                      <p className="text-gray-500">{category.name}</p>
+                      <p className="text-gray-100">{category.name}</p>
                     </h1>
                   )}
                 </motion.div>
