@@ -9,7 +9,13 @@ const categories = [
     id: 1,
     name: 'Camisas',
     sub: [
-      { name: 'Camisas1', link: '/camisas' },
+      {
+        name: 'Camisas1',
+        sub2: [
+          { name: 'Camisas2', link: '/camisas1' },
+          { name: 'Camisas2', link: '/camisas2' }
+        ]
+      },
       { name: 'Camisas2', link: '/camisas' }
     ]
   },
@@ -70,6 +76,7 @@ const products = [
 
 export default function Example() {
   const [isOpen, setIsOpen] = useState(false)
+  const [subIsOpen, subSetIsOpen] = useState(false)
   const [listProdutos, setListProdutos] = useState()
   useEffect(() => {
     axios.get('http://localhost:3001/getProducts').then(response => {
@@ -109,17 +116,60 @@ export default function Example() {
                       >
                         {category.sub.map(sub => (
                           <Menu key={sub.name} className="abolute space-y-2">
-                            <Link href={sub.link}>
-                              <a
-                                className={`${
-                                  isOpen
-                                    ? ' block text-gray-400 hover:text-gray-500 dark:text-white'
-                                    : 'hidden'
-                                } group flex rounded-md items-center w-full px-2 py-2 text-sm space-y-2`}
-                              >
-                                {sub.name}
-                              </a>
-                            </Link>
+                            <>
+                              {sub.sub2 && (
+                                <>
+                                  <button
+                                    className={`${
+                                      isOpen
+                                        ? ' block text-gray-400 hover:text-gray-500 dark:text-white'
+                                        : 'hidden'
+                                    } w-full flex pl-2 justify-between text-sm text-gray-400 hover:text-gray-500 dark:text-white`}
+                                    onClick={() =>
+                                      subSetIsOpen(subIsOpen => !subIsOpen)
+                                    }
+                                  >
+                                    <span className="font-medium ">
+                                      {category.name}
+                                    </span>
+                                    <span className="ml-6 flex items-center">
+                                      <h1>toggle</h1>
+                                    </span>
+                                  </button>
+                                  <motion.div
+                                    animate={subIsOpen ? 'open' : 'closed'}
+                                    variants={variants}
+                                  >
+                                    {sub.sub2.map(sub2 => (
+                                      <Link key={sub2.name} href={sub2.link}>
+                                        <a
+                                          className={`${
+                                            subIsOpen & isOpen
+                                              ? ' block text-gray-400 hover:text-gray-500 dark:text-white'
+                                              : 'hidden'
+                                          } w-full flex pl-4 justify-between text-sm text-gray-400 hover:text-gray-500 dark:text-white`}
+                                        >
+                                          {sub2.name}
+                                        </a>
+                                      </Link>
+                                    ))}
+                                  </motion.div>
+                                </>
+                              )}
+                              {!sub.sub2 && (
+                                <Link href={sub.link}>
+                                  <a
+                                    className={`${
+                                      isOpen
+                                        ? ' block text-gray-400 hover:text-gray-500 dark:text-white'
+                                        : 'hidden'
+                                    } group flex rounded-md items-center w-full px-2 py-2 text-sm space-y-2`}
+                                  >
+                                    {sub.name}
+                                  </a>
+                                </Link>
+                              )}
+                            </>
                           </Menu>
                         ))}
                       </motion.div>
