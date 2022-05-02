@@ -91,7 +91,7 @@ export default function Example() {
             <h1>Esse sera o ASIDE</h1>
             {categories.map(category => (
               <>
-                <motion.div>
+                <motion.div key={category.name}>
                   {category.sub && (
                     <div>
                       <button
@@ -108,7 +108,7 @@ export default function Example() {
                         variants={variants}
                       >
                         {category.sub.map(sub => (
-                          <Menu className="abolute space-y-2">
+                          <Menu key={sub.name} className="abolute space-y-2">
                             <Link href={sub.link}>
                               <a
                                 className={`${
