@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
-import { Menu, Transition } from '@headlessui/react'
 import axios from 'axios'
 import { Fragment, useState, useEffect } from 'react'
+import Aside from '../../components/Aside'
 import Link from 'next/link'
 
 const categories = [
@@ -25,11 +25,6 @@ const categories = [
   }
 ]
 
-const variants = {
-  open: { opacity: 1, y: 0 },
-  closed: { opacity: 0, y: '-100%' }
-}
-
 const products = [
   {
     id: 1,
@@ -44,7 +39,7 @@ const products = [
   {
     id: 2,
     name: 'Basic Tee',
-    href: 'produtos/1',
+    href: 'produtos/2',
     imageSrc:
       'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
     imageAlt: "Front of men's Basic Tee in black.",
@@ -54,7 +49,7 @@ const products = [
   {
     id: 3,
     name: 'Basic Tee',
-    href: 'produtos/1',
+    href: 'produtos/3',
     imageSrc:
       'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
     imageAlt: "Front of men's Basic Tee in black.",
@@ -64,7 +59,7 @@ const products = [
   {
     id: 4,
     name: 'Basic Tee',
-    href: 'produtos/1',
+    href: 'produtos/4',
     imageSrc:
       'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
     imageAlt: "Front of men's Basic Tee in black.",
@@ -75,8 +70,6 @@ const products = [
 ]
 
 export default function Example() {
-  const [isOpen, setIsOpen] = useState(false)
-  const [subIsOpen, subSetIsOpen] = useState(false)
   const [listProdutos, setListProdutos] = useState()
   useEffect(() => {
     axios.get('http://localhost:3001/getProducts').then(response => {
@@ -92,100 +85,9 @@ export default function Example() {
       </h1>
       <div className="border-b-2 border-b-white mx-6 pt-4" />
       <div className="flex space-x-8 ">
-        <div className="mt-6 gap-y-10 mr-auto py-10 lg:pl-10 dark:text-white hidden lg:block ">
-          <h1 className="text-2xl font-bold">Categorias</h1>
-          <motion.div>
-            <h1>Esse sera o ASIDE</h1>
-            {categories.map(category => (
-              <>
-                <motion.div key={category.name}>
-                  {category.sub && (
-                    <div>
-                      <button
-                        className="w-full flex  justify-between text-sm text-gray-400 hover:text-gray-500 dark:text-white"
-                        onClick={() => setIsOpen(isOpen => !isOpen)}
-                      >
-                        <span className="font-medium ">{category.name}</span>
-                        <span className="ml-6 flex items-center">
-                          <h1>toggle</h1>
-                        </span>
-                      </button>
-                      <motion.div
-                        animate={isOpen ? 'open' : 'closed'}
-                        variants={variants}
-                      >
-                        {category.sub.map(sub => (
-                          <Menu key={sub.name} className="abolute space-y-2">
-                            <>
-                              {sub.sub2 && (
-                                <>
-                                  <button
-                                    className={`${
-                                      isOpen
-                                        ? ' block text-gray-400 hover:text-gray-500 dark:text-white'
-                                        : 'hidden'
-                                    } w-full flex pl-2 justify-between text-sm text-gray-400 hover:text-gray-500 dark:text-white`}
-                                    onClick={() =>
-                                      subSetIsOpen(subIsOpen => !subIsOpen)
-                                    }
-                                  >
-                                    <span className="font-medium ">
-                                      {category.name}
-                                    </span>
-                                    <span className="ml-6 flex items-center">
-                                      <h1>toggle</h1>
-                                    </span>
-                                  </button>
-                                  <motion.div
-                                    animate={subIsOpen ? 'open' : 'closed'}
-                                    variants={variants}
-                                  >
-                                    {sub.sub2.map(sub2 => (
-                                      <Link key={sub2.name} href={sub2.link}>
-                                        <a
-                                          className={`${
-                                            subIsOpen & isOpen
-                                              ? ' block text-gray-400 hover:text-gray-500 dark:text-white'
-                                              : 'hidden'
-                                          } w-full flex pl-4 justify-between text-sm text-gray-400 hover:text-gray-500 dark:text-white`}
-                                        >
-                                          {sub2.name}
-                                        </a>
-                                      </Link>
-                                    ))}
-                                  </motion.div>
-                                </>
-                              )}
-                              {!sub.sub2 && (
-                                <Link href={sub.link}>
-                                  <a
-                                    className={`${
-                                      isOpen
-                                        ? ' block text-gray-400 hover:text-gray-500 dark:text-white'
-                                        : 'hidden'
-                                    } group flex rounded-md items-center w-full px-2 py-2 text-sm space-y-2`}
-                                  >
-                                    {sub.name}
-                                  </a>
-                                </Link>
-                              )}
-                            </>
-                          </Menu>
-                        ))}
-                      </motion.div>
-                    </div>
-                  )}
-
-                  {!category.sub && (
-                    <h1>
-                      <p className="text-gray-100">{category.name}</p>
-                    </h1>
-                  )}
-                </motion.div>
-              </>
-            ))}
-          </motion.div>
-        </div>
+        {/* Aside */}
+        <Aside categories={categories} />
+        {/* End-Aside */}
 
         <div className="max-w-2xl mr-auto  pr-18 sm:py-10 sm:px-6 lg:max-w-7xl lg:pr-18">
           <div className="mt-6 grid grid-cols-2 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
@@ -197,23 +99,29 @@ export default function Example() {
                 key={product.id}
               >
                 <div key={product.id} className="group relative">
-                  <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none">
-                    <img
-                      src={product.imageSrc}
-                      alt={product.imageAlt}
-                      className="w-full h-full object-center object-cover lg:w-full lg:h-full"
-                    />
-                  </div>
-                  <div className="mt-4 flex justify-between">
-                    <div>
-                      <h3 className="text-sm text-gray-700 dark:text-slate-300">
-                        {product.name}
-                      </h3>
-                      <p className="text-sm font-medium text-gray-900 dark:text-slate-400">
-                        {product.price}
-                      </p>
+                  <>
+                    <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none">
+                      <Link className="hover:" href={product.href}>
+                        <img
+                          src={product.imageSrc}
+                          alt={product.imageAlt}
+                          className="cursor-pointer w-full h-full object-center object-cover lg:w-full lg:h-full"
+                        />
+                      </Link>
                     </div>
-                  </div>
+                    <div className="mt-4 flex justify-between">
+                      <div>
+                        <Link className="hover:" href={product.href}>
+                          <h3 className="cursor-pointer text-sm text-gray-700 dark:text-slate-300">
+                            {product.name}
+                          </h3>
+                        </Link>
+                        <p className="text-sm font-medium text-gray-900 dark:text-slate-400">
+                          {product.price}
+                        </p>
+                      </div>
+                    </div>
+                  </>
                 </div>
               </motion.product>
             ))}
