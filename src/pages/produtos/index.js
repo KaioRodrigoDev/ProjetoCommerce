@@ -4,27 +4,6 @@ import { Fragment, useState, useEffect } from 'react'
 import Aside from '../../components/Aside'
 import Link from 'next/link'
 
-const categories = [
-  {
-    id: 1,
-    name: 'Camisas',
-    sub: [
-      {
-        name: 'Camisas1',
-        sub2: [
-          { name: 'Camisas2', link: '/camisas1' },
-          { name: 'Camisas2', link: '/camisas2' }
-        ]
-      },
-      { name: 'Camisas2', link: '/camisas' }
-    ]
-  },
-  {
-    id: 2,
-    name: 'Calças'
-  }
-]
-
 const products = [
   {
     id: 1,
@@ -86,7 +65,7 @@ export default function Example() {
       <div className="border-b-2 border-b-white mx-6 pt-4" />
       <div className="flex space-x-8 ">
         {/* Aside */}
-        <Aside categories={categories} />
+        <Aside />
         {/* End-Aside */}
 
         <div className="max-w-2xl mr-auto  pr-18 sm:py-10 sm:px-6 lg:max-w-7xl lg:pr-18">

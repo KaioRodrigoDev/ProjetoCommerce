@@ -4,9 +4,28 @@ import { useState } from 'react'
 import Link from 'next/link'
 
 // import { Container } from './styles';
+const categories = [
+  {
+    id: 1,
+    name: 'Camisas',
+    sub: [
+      {
+        name: 'Camisas1',
+        sub2: [
+          { name: 'Camisas2', link: '/camisas1' },
+          { name: 'Camisas2', link: '/camisas2' }
+        ]
+      },
+      { name: 'Camisas2', link: '/camisas' }
+    ]
+  },
+  {
+    id: 2,
+    name: 'Calças'
+  }
+]
 
-export default function Aside(cat) {
-  const categories = cat.categories
+export default function Aside() {
   const [isOpen, setIsOpen] = useState(false)
   const [subIsOpen, subSetIsOpen] = useState(false)
 
