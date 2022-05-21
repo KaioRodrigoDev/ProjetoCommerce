@@ -11,8 +11,6 @@ export default function Home() {
             <div className="flex w-full bg-sky-400">
               <div className="mx-auto flex items-center">
                 <div className="pr-6">
-                  <h1 className="-mb-5 -ml-3">Lorem Ipsum</h1>
-                  <h1 className="-mb-5 -ml-4">Lorem Ipsum</h1>
                   <h1 className="-ml-5">Lorem Ipsum</h1>
                 </div>
                 <img

@@ -38,7 +38,6 @@ export default function Aside() {
     <div className="mt-6 gap-y-10 mr-auto py-10 lg:pl-10 dark:text-white hidden lg:block ">
       <h1 className="text-2xl font-bold">Categorias</h1>
       <motion.div>
-        <h1>Esse sera o ASIDE</h1>
         {categories.map(category => (
           <>
             <motion.div key={category.name}>

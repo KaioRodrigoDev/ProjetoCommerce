@@ -700,18 +700,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-top: 0.75rem;
 }
 
-.-mb-5 {
-  margin-bottom: -1.25rem;
-}
-
-.-ml-3 {
-  margin-left: -0.75rem;
-}
-
-.-ml-4 {
-  margin-left: -1rem;
-}
-
 .-ml-5 {
   margin-left: -1.25rem;
 }
@@ -782,6 +770,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .h-12 {
   height: 3rem;
+}
+
+.h-3 {
+  height: 0.75rem;
 }
 
 .min-h-screen {
@@ -1375,6 +1367,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-top: 1rem;
 }
 
+.pb-4 {
+  padding-bottom: 1rem;
+}
+
 .pr-6 {
   padding-right: 1.5rem;
 }
@@ -1409,10 +1405,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .pb-16 {
   padding-bottom: 4rem;
-}
-
-.pb-4 {
-  padding-bottom: 1rem;
 }
 
 .text-center {
@@ -2085,10 +2077,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   .sm\:py-6 {
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
-  }
-
-  .sm\:text-center {
-    text-align: center;
   }
 
   .sm\:text-3xl {

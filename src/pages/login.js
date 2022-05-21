@@ -1,20 +1,17 @@
 import { firebase, auth } from '../../src/services/firebase'
 import { LockClosedIcon } from '@heroicons/react/solid'
-import { useDispatch, useSelector } from 'react-redux'
-import { updateUserData } from '../services/redux/slices/slices'
 
 export default function Login() {
-  const dispatch = useDispatch()
-  const user = useSelector(state => state.user)
-
   async function SignInWithGoogle() {
-    const provider = new firebase.auth.GoogleAuthProvider()
-    const result = await auth.signInWithPopup(provider)
-    console.log(result.user.displayName)
-    dispatch(
-      updateUserData({ isLogged: true, userData: result.user.displayName })
-    )
-    return result
+    try {
+      const provider = new firebase.auth.GoogleAuthProvider()
+      const result = await auth.signInWithPopup(provider)
+      console.log(result)
+
+      return result
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   async function signInWithEmail() {
