@@ -1,18 +1,16 @@
 import Link from 'next/link'
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 
 // import { Container } from './styles';
 
 export default function Register() {
   //TELA DE REGISTRO
-  const user = useSelector(state => state.user)
   return (
     <div className="bg-white dark:h-screen dark:bg-slate-900">
       <div className="max-w-2xl mx-auto  px-4 sm:py-10 sm:px-6 lg:max-w-7xl lg:px-8">
         <div className="flex flex-col items-center justify-center ">
           <div className="mt-4 flex-1">
-            <form className="bg-white dark:bg-gray-900 dark:text-white dark:border-gray-800 dark:border-opacity-50 dark:shadow dark:shadow-sm dark:elevation-2">
+            <form className="bg-white dark:bg-gray-900 dark:text-white dark:border-gray-800 dark:border-opacity-50 dark:shadow  dark:elevation-2">
               <div className="flex flex-col items-center justify-center p-6">
                 <div className="flex flex-col items-center justify-center ">
                   <div className="flex-shrink-0">
@@ -22,7 +20,6 @@ export default function Register() {
                       alt="Workflow"
                     />
                   </div>
-                  {JSON.stringify(user)}
                   <div className="mt-4 ">
                     <label
                       htmlFor="email"
