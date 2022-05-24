@@ -7,11 +7,9 @@ export default function Sobre() {
   //
   //
   const [listProdutos, setListProdutos] = useState()
-  console.log(listProdutos)
 
   useEffect(() => {
     Axios.get('http://localhost:3001/getProducts').then(response => {
-      console.log(response.data)
       setListProdutos(response.data)
     })
   }, [])
@@ -42,6 +40,7 @@ export default function Sobre() {
                   <Card
                     key={product.id}
                     id={product.id}
+                    img={product.imagens}
                     nome={product.nome}
                     preco={product.preco}
                     tamanho={product.tamanhos}

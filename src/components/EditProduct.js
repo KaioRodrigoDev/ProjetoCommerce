@@ -3,8 +3,10 @@ import { Fragment, useState } from 'react'
 import axios from 'axios'
 
 export default function MyModal(props) {
+  console.log(props)
   const [editValue, setEditValue] = useState({
     id: props.id,
+    img: props.img,
     nome: props.nome,
     preco: props.preco
   })
@@ -77,6 +79,7 @@ export default function MyModal(props) {
                   Edite as informações
                 </Dialog.Title>
                 <div className="mt-2">
+                  <img src={props.img} />
                   <p className="text-sm text-gray-500">Produto:{props.nome}</p>
                   <p className="text-sm text-gray-500">Preço:{props.preco}$</p>
                   <input

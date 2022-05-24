@@ -80,6 +80,7 @@ export default function AdminProducts(props) {
           <Dialog
             isOpen={isOpen}
             setIsOpen={setIsOpen}
+            img={props.img}
             nome={props.nome}
             preco={props.preco}
             id={props.id}
