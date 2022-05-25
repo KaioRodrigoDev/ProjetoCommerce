@@ -3,7 +3,6 @@ import { Fragment, useState } from 'react'
 import axios from 'axios'
 
 export default function MyModal(props) {
-  console.log(props)
   const [editValue, setEditValue] = useState({
     id: props.id,
     img: props.img,

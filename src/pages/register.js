@@ -5,6 +5,7 @@ import React from 'react'
 
 export default function Register() {
   //TELA DE REGISTRO
+
   return (
     <div className="bg-white dark:h-screen dark:bg-slate-900">
       <div className="max-w-2xl mx-auto  px-4 sm:py-10 sm:px-6 lg:max-w-7xl lg:px-8">

@@ -5,18 +5,30 @@ import axios from 'axios'
 export default function MyModal(props) {
   const [newproduct, setNewProduct] = useState()
 
-  const handleEditIdade = () => {
-    axios
-      .post('http://localhost:3001/newProduct', {
-        nome: newproduct.nome,
-        preco: newproduct.preco,
-        imagem: newproduct.imagem,
-        cores: newproduct.cores,
-        tamanhos: newproduct.tamanhos,
-        descricao: newproduct.descricao,
-        categorias: newproduct.categorias,
-        detalhes: newproduct.detalhes
-      })
+  const handleEditProduct = async e => {
+    const formData = new FormData()
+    formData.append('imagem', newproduct.imagem)
+    const headers = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+    console.log(newproduct.imagem)
+    await axios
+      .post(
+        'http://localhost:3001/newProduct',
+        {
+          nome: newproduct.nome,
+          preco: newproduct.preco,
+          imagem: newproduct.imagem,
+          cores: newproduct.cores,
+          tamanhos: newproduct.tamanhos,
+          descricao: newproduct.descricao,
+          categorias: newproduct.categorias,
+          detalhes: newproduct.detalhes
+        },
+        headers
+      )
       .then(response => {
         console.log(response)
       })
@@ -82,69 +94,71 @@ export default function MyModal(props) {
                   Adicione um novo produto
                 </Dialog.Title>
                 <div>
-                  <div>
-                    <p className="font-black text-xs mt-4">nome</p>
-                    <input
-                      type="text"
-                      name="nome"
-                      onChange={handleChangeValue}
-                      className="border-2 border-gray-800"
-                    />
-                    <p className="font-black text-xs mt-2">Preço</p>
-                    <input
-                      type="text"
-                      name="preco"
-                      onChange={handleChangeValue}
-                      className="border-2 border-gray-800"
-                    />
-                    <p className="font-black text-xs mt-2 ">imagem</p>
-                    <input
-                      type="file"
-                      name="imagem"
-                      onChange={handleChangeValue}
-                      className="border-2 border-gray-800 "
-                    />
-                  </div>
-                  <div>
-                    <p className="font-black text-xs mt-2">Cores</p>
-                    <input
-                      type="text"
-                      name="cores"
-                      onChange={handleChangeValue}
-                      className="border-2 border-gray-800 "
-                    />
+                  <form method="post" encType="multipart/form-data">
+                    <div>
+                      <p className="font-black text-xs mt-4">nome</p>
+                      <input
+                        type="text"
+                        name="nome"
+                        onChange={handleChangeValue}
+                        className="border-2 border-gray-800"
+                      />
+                      <p className="font-black text-xs mt-2">Preço</p>
+                      <input
+                        type="text"
+                        name="preco"
+                        onChange={handleChangeValue}
+                        className="border-2 border-gray-800"
+                      />
+                      <p className="font-black text-xs mt-2 ">imagem</p>
+                      <input
+                        type="file"
+                        name="imagem"
+                        onChange={handleChangeValue}
+                        className="border-2 border-gray-800 "
+                      />
+                    </div>
+                    <div>
+                      <p className="font-black text-xs mt-2">Cores</p>
+                      <input
+                        type="text"
+                        name="cores"
+                        onChange={handleChangeValue}
+                        className="border-2 border-gray-800 "
+                      />
 
-                    <p className="font-black text-xs mt-2">Tamanhos</p>
-                    <input
-                      type="text"
-                      name="tamanhos"
-                      onChange={handleChangeValue}
-                      className="border-2 border-gray-800 "
-                    />
-                  </div>
-                  <div>
-                    <p className="font-black text-xs  mt-2">Descrição</p>
-                    <input
-                      type="text"
-                      name="descricao"
-                      onChange={handleChangeValue}
-                      className="border-2 border-gray-800 "
-                    />
-                    <p className="font-black text-xs mt-2">Detalhes</p>
-                    <input
-                      type="text"
-                      name="detalhes"
-                      onChange={handleChangeValue}
-                      className="border-2 border-gray-800 "
-                    />
-                    <p className="font-black text-xs mt-2">Categorias</p>
-                    <input
-                      type="text"
-                      name="categorias"
-                      onChange={handleChangeValue}
-                      className="border-2 border-gray-800 "
-                    />
-                  </div>
+                      <p className="font-black text-xs mt-2">Tamanhos</p>
+                      <input
+                        type="text"
+                        name="tamanhos"
+                        onChange={handleChangeValue}
+                        className="border-2 border-gray-800 "
+                      />
+                    </div>
+                    <div>
+                      <p className="font-black text-xs  mt-2">Descrição</p>
+                      <input
+                        type="text"
+                        name="descricao"
+                        onChange={handleChangeValue}
+                        className="border-2 border-gray-800 "
+                      />
+                      <p className="font-black text-xs mt-2">Detalhes</p>
+                      <input
+                        type="text"
+                        name="detalhes"
+                        onChange={handleChangeValue}
+                        className="border-2 border-gray-800 "
+                      />
+                      <p className="font-black text-xs mt-2">Categorias</p>
+                      <input
+                        type="text"
+                        name="categorias"
+                        onChange={handleChangeValue}
+                        className="border-2 border-gray-800 "
+                      />
+                    </div>
+                  </form>
                   <div></div>
                 </div>
 
@@ -152,7 +166,7 @@ export default function MyModal(props) {
                   <button
                     type="button"
                     className="inline-flex justify-center px-4 py-2 text-sm font-medium text-blue-900 bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
-                    onClick={handleEditIdade}
+                    onClick={handleEditProduct}
                   >
                     Got it, thanks!
                   </button>
