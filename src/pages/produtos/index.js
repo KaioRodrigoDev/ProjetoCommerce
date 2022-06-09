@@ -2,14 +2,21 @@ import axios from 'axios'
 import { Fragment, useState, useEffect } from 'react'
 import Aside from '../../components/Aside'
 import Products from '../../components/Products'
+import { getAllProducts } from '../../lib/dato-cms'
 
 export default function Example() {
   const [listProdutos, setListProdutos] = useState()
-  useEffect(() => {
-    axios.get('http://localhost:3001/getProducts').then(response => {
-      console.log(response)
-      setListProdutos(response.data)
+  useEffect(async () => {
+    await getAllProducts().then(data => {
+      setListProdutos(data)
+      console.log(data)
     })
+
+    async function getProducts() {
+      const products = await getAllProducts()
+    }
+
+    getProducts()
   }, [])
 
   return (
@@ -20,11 +27,11 @@ export default function Example() {
       <div className="border-b-2 border-b-white mx-6 pt-4" />
       <div className="flex space-x-8 ">
         {/* Aside */}
-        <Aside />
+
         {/* End-Aside */}
 
         <div className="max-w-2xl mr-auto  pr-18 sm:py-10 sm:px-6 lg:max-w-7xl lg:pr-18">
-          <Products />
+          <Products listProdutos />
         </div>
       </div>
     </div>

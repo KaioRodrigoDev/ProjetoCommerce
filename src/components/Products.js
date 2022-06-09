@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
+import { getAllProducts } from '../lib/dato-cms'
 
 // import { Container } from './styles';
 
@@ -49,9 +50,21 @@ const products = [
 ]
 
 export default function Products() {
+  // const [products, setProducts] = useState([])
+
+  // useEffect(async () => {
+  //   await getAllProducts().then(data => {
+  //     setProducts(data)
+  //     console.log(data)
+  //   })
+
+  //   async function getProducts() {
+  //     const products = await getAllProducts()
+  //   }
+  // }, [])
   return (
     <div className="mt-6 grid grid-cols-2 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-      {products.map((product, key) => (
+      {products?.map((product, key) => (
         <motion.product
           initial={{ opacity: 0, y: +100 }}
           animate={{ opacity: 1, y: 0 }}
