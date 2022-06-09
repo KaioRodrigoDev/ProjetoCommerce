@@ -25,14 +25,8 @@ export default function Example() {
         Mantos
       </h1>
       <div className="border-b-2 border-b-white mx-6 pt-4" />
-      <div className="flex space-x-8 ">
-        {/* Aside */}
-
-        {/* End-Aside */}
-
-        <div className="max-w-2xl mr-auto  pr-18 sm:py-10 sm:px-6 lg:max-w-7xl lg:pr-18">
-          <Products listProdutos />
-        </div>
+      <div className="max-w-2xl sm:py-10 sm:px-6 lg:max-w-7xl lg:pr-18">
+        <Products products={listProdutos} />
       </div>
     </div>
   )

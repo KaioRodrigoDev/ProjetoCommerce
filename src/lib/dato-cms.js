@@ -1,5 +1,5 @@
 const API_URL = 'https://graphql.datocms.com/'
-const API_TOKEN = process.env.DATOCMS_READONLY
+const API_TOKEN = '24a12381766a1af2cec1b80d9b6d8c'
 
 async function AXIOSCmsAPI(query, { variables } = {}) {
   const res = await fetch(API_URL, {
@@ -30,6 +30,9 @@ export async function getAllProducts() {
     id
     nome
     preco
+    imagem {
+      url
+    }
   }
 }
   `)
