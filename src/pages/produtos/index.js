@@ -1,8 +1,7 @@
-import axios from 'axios'
 import { Fragment, useState, useEffect } from 'react'
-import Aside from '../../components/layout/Aside'
 import Products from '../../components/products/Products'
 import { getAllProducts } from '../../lib/dato-cms'
+import { SearchIcon } from '@heroicons/react/outline'
 
 export default function Example() {
   const [listProdutos, setListProdutos] = useState()
@@ -15,9 +14,13 @@ export default function Example() {
 
   return (
     <div className="bg-white dark:min-h-screen dark:bg-bg px-10">
-      <h1 className="lg:mx-auto text-4xl lg:pl-10 pt-12 dark:text-white ">
-        Mantos
-      </h1>
+      <div className="flex lg:px-6 pt-12 place-content-between">
+        <h1 className=" text-4xl  dark:text-white ">Mantos</h1>
+        <div className="flex bg-white rounded-xl mt-2 items-center">
+          <input className="h-8 pl-2 focus-none outline-none rounded-l-xl " />
+          <SearchIcon className=" p-2" width={32} />
+        </div>
+      </div>
       <div className="border-b-2 border-b-white mx-6 pt-4" />
       <div className="max-w-2xl sm:py-10 sm:px-6 lg:max-w-7xl lg:pr-18">
         <Products products={listProdutos} />

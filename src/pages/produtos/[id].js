@@ -83,7 +83,7 @@ function classNames(...classes) {
 }
 
 export default function SingleProduct() {
-  const [singleProduct, setsingleProduct] = useState([])
+  const [singleProduct, setsingleProduct] = useState()
   const [selectedColor, setSelectedColor] = useState(product.colors[0])
   const [selectedSize, setSelectedSize] = useState(product.sizes[2])
 
@@ -91,9 +91,8 @@ export default function SingleProduct() {
 
   useEffect(async () => {
     console.log(query.id)
-    const id = query.id
-    const prod = await getProduct(id).then(res => {
-      console.log(prod)
+    const prod = await getProduct(query.id).then(res => {
+      setsingleProduct(res)
     })
   }, [])
 
@@ -123,11 +122,11 @@ export default function SingleProduct() {
           {/* Options */}
           <div className="mt-4 lg:mt-0 lg:row-span-3">
             <h1 className="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl dark:text-slate-100">
-              {product.name}
+              {singleProduct?.nome}
             </h1>
             <h2 className="sr-only">Product information</h2>
             <p className="text-2xl text-gray-900 dark:text-slate-300">
-              {product.price}
+              R$ {singleProduct?.preco}
             </p>
 
             {/* Reviews */}
@@ -299,7 +298,7 @@ export default function SingleProduct() {
 
                   <div className="space-y-6">
                     <p className="text-base text-gray-900 dark:text-slate-300">
-                      {product.description}
+                      {singleProduct?.descricao}
                     </p>
                   </div>
                 </div>

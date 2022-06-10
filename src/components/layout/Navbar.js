@@ -1,202 +1,166 @@
-import { Fragment } from 'react'
-import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
-import Switch from './Switch'
 import Link from 'next/link'
+import { useState } from 'react'
+import { motion, useCycle } from 'framer-motion'
 
-const user = {
-  name: 'Unknow',
-  email: 'unknow@example.com',
-  imageUrl:
-    'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80'
-}
 const navigation = [
-  { name: 'Home', href: '/', current: false },
-  { name: 'Sobre', href: '/sobre', current: false },
-  { name: 'Produtos', href: '/produtos', current: false }
-]
-const userNavigation = [
-  { name: 'Your Profile', href: '#' },
-  { name: 'Settings', href: '#' },
-  { name: 'Sign out', href: '#' }
+  { name: 'Home', href: '/' },
+  { name: 'Produtos', href: '/produtos' }
 ]
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
+const sidebar = {
+  open: {
+    x: '0%',
+    opacity: 1
+  },
+  closed: {
+    x: '-100%'
+  }
 }
+
+const filters = [
+  {
+    id: 'color',
+    name: 'Color',
+    options: [
+      { value: 'white', label: 'White', checked: false },
+      { value: 'beige', label: 'Beige', checked: false },
+      { value: 'blue', label: 'Blue', checked: false },
+      {
+        value: 'brown',
+        label: 'Brown',
+        option: ['TRUE', 'FALSE'],
+        checked: false
+      },
+      { value: 'green', label: 'Green', checked: false },
+      { value: 'purple', label: 'Purple', checked: false }
+    ]
+  }
+]
+
+const variants = {
+  open: { opacity: 1, x: 0 },
+  closed: { opacity: 0, x: '+100%' }
+}
+import { Dialog, Disclosure, Menu, Transition } from '@headlessui/react'
+import { XIcon } from '@heroicons/react/outline'
+import {
+  ChevronDownIcon,
+  FilterIcon,
+  MinusSmIcon,
+  PlusSmIcon,
+  ViewGridIcon
+} from '@heroicons/react/solid'
 
 export default function Navbar() {
-  return (
-    <>
-      {/*
-        This example requires updating your template:
+  const [isOpen, setIsOpen] = useState(true)
 
-        ```
-        <html class="h-full bg-gray-100">
-        <body class="h-full">
-        ```
-      */}
-      <div className="min-h-full">
-        <Disclosure as="nav" className="bg-bg border-b-2 border-[#464646]">
-          {({ open }) => (
-            <>
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex items-center justify-between h-16">
-                  <div className="flex items-center">
-                    <div className="flex-shrink-0">
-                      <img
-                        className="h-8 w-8"
-                        src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
-                        alt="Workflow"
-                      />
-                    </div>
-                    <div className="hidden md:block">
-                      <div className="ml-10 flex items-baseline space-x-4">
-                        {navigation.map(item => (
-                          <Link href={item.href} key={item.id}>
-                            <a
-                              key={item.name}
-                              className={classNames(
-                                item.current
-                                  ? 'bg-gray-900 text-white'
-                                  : 'text-gray-300  hover:text-white',
-                                'px-3 py-2 rounded-md text-sm font-medium'
-                              )}
-                              aria-current={item.current ? 'page' : undefined}
-                            >
-                              {item.name}
-                            </a>
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                  {/* DESKTOP */}
-                  <div className="hidden md:block">
-                    <div className="ml-4 flex items-center md:ml-6">
-                      {/* Profile dropdown */}
-                      <Menu as="div" className="ml-3 relative">
-                        <div>
-                          <Menu.Button className="max-w-xs bg-gray-800 rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
-                            <span className="sr-only">Open user menu</span>
-                            <img
-                              className="h-8 w-8 rounded-full"
-                              src={user.imageUrl}
-                              alt=""
-                            />
-                          </Menu.Button>
-                        </div>
-                        <Transition
-                          as={Fragment}
-                          enter="transition ease-out duration-100"
-                          enterFrom="transform opacity-0 scale-95"
-                          enterTo="transform opacity-100 scale-100"
-                          leave="transition ease-in duration-75"
-                          leaveFrom="transform opacity-100 scale-100"
-                          leaveTo="transform opacity-0 scale-95"
-                        >
-                          <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-                            {userNavigation.map(item => (
-                              <Menu.Item key={item.name}>
-                                {({ active }) => (
-                                  <Link href={item.href} key={item.id}>
-                                    <a
-                                      className={classNames(
-                                        active ? 'bg-gray-100' : '',
-                                        'block px-4 py-2 text-sm text-gray-700'
-                                      )}
-                                    >
-                                      {item.name}
-                                    </a>
-                                  </Link>
-                                )}
-                              </Menu.Item>
-                            ))}
-                          </Menu.Items>
-                        </Transition>
-                      </Menu>
-                    </div>
-                  </div>
-                  {/* MOBILE */}
-                  <div className="-mr-2 flex md:hidden">
-                    {/* Mobile menu button */}
-                    <Disclosure.Button className="bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
-                      <span className="sr-only">Open main menu</span>
-                      {open ? (
-                        <XIcon className="block h-6 w-6" aria-hidden="true" />
-                      ) : (
-                        <MenuIcon
-                          className="block h-6 w-6"
-                          aria-hidden="true"
-                        />
-                      )}
-                    </Disclosure.Button>
-                  </div>
-                </div>
+  return (
+    <div className="min-h-full border-b-2 border-slate-500 ">
+      <div className="flex items-center justify-between px-10 py-4 bg-white dark:bg-bg dark:text-white">
+        <div className="flex items-center">
+          <div>
+            <img
+              className="block  h-8 w-auto"
+              src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
+              alt="Workflow"
+            />
+          </div>
+          <div className="lg:flex space-x-5 pt-1 pl-7 hidden">
+            {navigation.map(({ name, href }) => (
+              <Link href={href} key={name}>
+                <a className=" text-sm font-medium text-gray-800 hover:text-gray-600 dark:text-slate-200 dark:hover:text-white ">
+                  {name}
+                </a>
+              </Link>
+            ))}
+          </div>
+
+          <motion.nav
+            animate={isOpen ? 'open' : 'closed'}
+            variants={variants}
+            className="fixed inset-0 flex z-40 lg:hidden"
+          >
+            <button onClick={() => setIsOpen(isOpen => !isOpen)} />
+            <div className="ml-auto relative max-w-xs w-full h-full bg-white shadow-xl py-4 pb-12 flex flex-col overflow-y-auto">
+              <div className="px-4 flex items-center justify-between">
+                <h2 className="text-lg font-medium text-gray-900">Filters</h2>
+                <button
+                  type="button"
+                  className="-mr-2 w-10 h-10 bg-white p-2 rounded-md flex items-center justify-center text-gray-400"
+                  onClick={() => setIsOpen(isOpen => !isOpen)}
+                >
+                  <span className="sr-only">Close menu</span>
+                  <XIcon className="h-6 w-6" aria-hidden="true" />
+                </button>
               </div>
 
-              <Disclosure.Panel className="md:hidden">
-                <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                  {navigation.map(item => (
-                    <Disclosure.Button
-                      key={item.name}
-                      as="a"
-                      href={item.href}
-                      className={classNames(
-                        item.current
-                          ? 'bg-gray-900 text-white'
-                          : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                        'block px-3 py-2 rounded-md text-base font-medium'
-                      )}
-                      aria-current={item.current ? 'page' : undefined}
-                    >
-                      {item.name}
-                    </Disclosure.Button>
-                  ))}
-                </div>
-                <div className="pt-4 pb-3 border-t border-gray-700">
-                  <div className="flex items-center px-5">
-                    <div className="flex-shrink-0">
-                      <img
-                        className="h-10 w-10 rounded-full"
-                        src={user.imageUrl}
-                        alt=""
-                      />
-                    </div>
-                    <div className="ml-3">
-                      <div className="text-base font-medium leading-none text-white">
-                        {user.name}
-                      </div>
-                      <div className="text-sm font-medium leading-none text-gray-400">
-                        {user.email}
-                      </div>
-                    </div>
-                    <button
-                      type="button"
-                      className="ml-auto bg-gray-800 flex-shrink-0 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
-                    >
-                      <span className="sr-only">View notifications</span>
-                      <BellIcon className="h-6 w-6" aria-hidden="true" />
-                    </button>
-                  </div>
-                  <div className="mt-3 px-2 space-y-1">
-                    {userNavigation.map(item => (
-                      <Disclosure.Button
-                        key={item.name}
-                        as="a"
-                        href={item.href}
-                        className="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700"
-                      >
-                        {item.name}
-                      </Disclosure.Button>
-                    ))}
-                  </div>
-                </div>
-              </Disclosure.Panel>
-            </>
-          )}
-        </Disclosure>
+              {/* Mobile Filters */}
+              <form className="mt-4 border-t border-gray-200">
+                <h3 className="sr-only">Categories</h3>
+
+                {filters.map((section, key) => (
+                  <Disclosure
+                    as="div"
+                    key={section.id}
+                    className="border-t border-gray-200 px-4 py-6"
+                  >
+                    {({ open }) => (
+                      <>
+                        <h3 className="-mx-2 -my-3 flow-root">
+                          <Disclosure.Button className="px-2 py-3 bg-white w-full flex items-center justify-between text-gray-400 hover:text-gray-500">
+                            <span className="font-medium text-gray-900">
+                              {section.name}
+                            </span>
+                            <span className="ml-6 flex items-center">
+                              {open ? (
+                                <MinusSmIcon
+                                  className="h-5 w-5"
+                                  aria-hidden="true"
+                                />
+                              ) : (
+                                <PlusSmIcon
+                                  className="h-5 w-5"
+                                  aria-hidden="true"
+                                />
+                              )}
+                            </span>
+                          </Disclosure.Button>
+                        </h3>
+
+                        <Disclosure.Panel className="pt-6">
+                          <div className="space-y-6">
+                            {section.options.map((option, optionIdx) => (
+                              <div
+                                key={option.value}
+                                className="flex items-center"
+                              >
+                                <input
+                                  id={`filter-mobile-${section.id}-${optionIdx}`}
+                                  name={`${section.id}[]`}
+                                  defaultValue={option.value}
+                                  type="checkbox"
+                                  defaultChecked={option.checked}
+                                  className="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500"
+                                />
+                                <label
+                                  htmlFor={`filter-mobile-${section.id}-${optionIdx}`}
+                                  className="ml-3 min-w-0 flex-1 text-gray-500"
+                                >
+                                  {option.label}
+                                </label>
+                              </div>
+                            ))}
+                          </div>
+                        </Disclosure.Panel>
+                      </>
+                    )}
+                  </Disclosure>
+                ))}
+              </form>
+            </div>
+          </motion.nav>
+        </div>
       </div>
-    </>
+    </div>
   )
 }

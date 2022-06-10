@@ -43,8 +43,10 @@ export async function getAllProducts() {
 export async function getProduct(id) {
   const data = await AXIOSCmsAPI(`
 {
-  camisa(filter: {id: {neq: " ${id} "}}) {
+  camisa(filter: {id: {in: " ${id} "}}) {
+    id
     nome
+    descricao
     preco
     imagem {
       url
@@ -53,7 +55,7 @@ export async function getProduct(id) {
 }
   `)
 
-  return data.camisa
+  return data?.camisa
 }
 
 export async function getLastsProduct() {

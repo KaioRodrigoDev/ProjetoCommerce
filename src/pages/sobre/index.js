@@ -1,7 +1,5 @@
 import Axios from 'axios'
 import { useState, useEffect } from 'react'
-import Card from '../../components/AdminProducts'
-import NewProduct from '../../components/NewProduct'
 
 export default function Sobre() {
   //
