@@ -40,4 +40,35 @@ export async function getAllProducts() {
   return data.allCamisas
 }
 
-export default { getAllProducts }
+export async function getProduct(id) {
+  const data = await AXIOSCmsAPI(`
+{
+  camisa(filter: {id: {neq: " ${id} "}}) {
+    nome
+    preco
+    imagem {
+      url
+    }
+  }
+}
+  `)
+
+  return data.camisa
+}
+
+export async function getLastsProduct() {
+  const data = await AXIOSCmsAPI(`
+{
+  allCamisas(orderBy: _createdAt_DESC) {
+    id
+    nome
+    preco
+  }
+
+}
+  `)
+
+  return data.allCamisas
+}
+
+export default { getAllProducts, getProduct, getLastsProduct }

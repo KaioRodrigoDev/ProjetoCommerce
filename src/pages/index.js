@@ -1,7 +1,17 @@
 import Link from 'next/link'
-import Products from '../components/Products'
+import Products from '../components/products/Products'
+import { useState, useEffect } from 'react'
+import { getAllProducts } from '../lib/dato-cms'
 
 export default function Home() {
+  const [listProdutos, setListProdutos] = useState()
+  useEffect(async () => {
+    await getAllProducts().then(data => {
+      setListProdutos(data)
+      console.log(data)
+    })
+  }, [])
+
   return (
     //Pagina inicial da loja
     <div className="dark:bg-bg dark:text-white min-h-screen pb-4">
@@ -91,7 +101,7 @@ export default function Home() {
                   <a>Ver Tudo</a>
                 </Link>
               </div>
-              <Products />
+              <Products products={listProdutos} />
             </div>
           </section>
         </div>

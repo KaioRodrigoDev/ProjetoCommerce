@@ -1,23 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { getAllProducts } from '../lib/dato-cms'
-
-// import { Container } from './styles';
 
 export default function Products({ products }) {
-  // const [products, setProducts] = useState([])
-
-  // useEffect(async () => {
-  //   await getAllProducts().then(data => {
-  //     setProducts(data)
-  //     console.log(data)
-  //   })
-
-  //   async function getProducts() {
-  //     const products = await getAllProducts()
-  //   }
-  // }, [])
   return (
     <div className="mt-6 grid grid-cols-2 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
       {products?.map((product, key) => (
@@ -30,16 +15,16 @@ export default function Products({ products }) {
           <div key={product.id} className="group relative">
             <>
               <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none">
-                <Link className="hover:" href={product.id}>
+                <Link className="hover:" href={`/produtos/${product.id}`}>
                   <img
-                    src={product.imagem.url}
+                    src={product.imagem[0].url}
                     className="cursor-pointer w-full h-full object-center object-cover lg:w-full lg:h-full"
                   />
                 </Link>
               </div>
               <div className="mt-4 flex justify-between">
                 <div>
-                  <Link className="hover:" href={product.id}>
+                  <Link className="hover:" href={`/produtos/${product.id}`}>
                     <h3 className="cursor-pointer text-sm text-gray-700 dark:text-slate-300">
                       {product.nome}
                     </h3>

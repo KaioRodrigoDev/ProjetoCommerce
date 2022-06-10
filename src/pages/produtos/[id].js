@@ -21,9 +21,11 @@
   }
   ```
 */
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { StarIcon } from '@heroicons/react/solid'
 import { RadioGroup } from '@headlessui/react'
+import { useRouter } from 'next/router'
+import { getProduct } from '../../lib/dato-cms'
 
 const product = {
   name: 'Basic Tee 6-Pack',
@@ -80,9 +82,20 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Example() {
+export default function SingleProduct() {
+  const [singleProduct, setsingleProduct] = useState([])
   const [selectedColor, setSelectedColor] = useState(product.colors[0])
   const [selectedSize, setSelectedSize] = useState(product.sizes[2])
+
+  const { query } = useRouter()
+
+  useEffect(async () => {
+    console.log(query.id)
+    const id = query.id
+    const prod = await getProduct(id).then(res => {
+      console.log(prod)
+    })
+  }, [])
 
   return (
     <div className="bg-white dark:bg-bg">
@@ -94,14 +107,12 @@ export default function Example() {
               <div className="hidden aspect-w-3 aspect-h-4 rounded-lg overflow-hidden lg:block">
                 <img
                   src={product.images[0].src}
-                  alt={product.images[0].alt}
                   className="w-full h-full object-center object-cover"
                 />
               </div>
               <div className="aspect-w-4 aspect-h-5 sm:rounded-lg sm:overflow-hidden lg:aspect-w-3 lg:aspect-h-4">
                 <img
                   src={product.images[3].src}
-                  alt={product.images[3].alt}
                   className="w-full h-full object-center object-cover"
                 />
               </div>

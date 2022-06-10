@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { Fragment, useState, useEffect } from 'react'
-import Aside from '../../components/Aside'
-import Products from '../../components/Products'
+import Aside from '../../components/layout/Aside'
+import Products from '../../components/products/Products'
 import { getAllProducts } from '../../lib/dato-cms'
 
 export default function Example() {
@@ -11,12 +11,6 @@ export default function Example() {
       setListProdutos(data)
       console.log(data)
     })
-
-    async function getProducts() {
-      const products = await getAllProducts()
-    }
-
-    getProducts()
   }, [])
 
   return (
