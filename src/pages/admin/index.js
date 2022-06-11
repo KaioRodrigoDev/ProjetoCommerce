@@ -1,5 +1,7 @@
 import Axios from 'axios'
 import { useState, useEffect } from 'react'
+import NewProduct from '../../components/admin/NewProduct'
+import AdminProducts from '../../components/admin/AdminProducts'
 
 export default function Sobre() {
   //
@@ -33,9 +35,9 @@ export default function Sobre() {
           <NewProduct isOpen={isOpen} setIsOpen={setIsOpen} />
           <div className="mt-10">
             {typeof listProdutos !== 'undefined' &&
-              listProdutos.map(product => {
+              listProdutos?.map(product => {
                 return (
-                  <Card
+                  <AdminProducts
                     key={product.id}
                     id={product.id}
                     img={product.imagens}
@@ -44,7 +46,7 @@ export default function Sobre() {
                     tamanho={product.tamanhos}
                     data={product.created_at}
                     tipo={product.tipo}
-                  ></Card>
+                  ></AdminProducts>
                 )
               })}
           </div>
