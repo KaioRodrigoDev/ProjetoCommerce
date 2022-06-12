@@ -9,28 +9,28 @@ export default function Products({ products }) {
         <motion.product
           initial={{ opacity: 0, y: +100 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 + 0.2 * key }}
-          key={product.id}
+          transition={{ duration: 0.5, delay: 0.5 + 0.2 * key }}
+          key={product?.id}
         >
-          <div key={product.id} className="group relative">
+          <div key={product?.id} className="group relative">
             <>
               <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none">
-                <Link className="hover:" href={`/produtos/${product.id}`}>
+                <Link className="hover:" href={`/produtos/${product?.id}`}>
                   <img
-                    src={product.imagem[0].url}
+                    src={product?.imagem?.[0]?.url}
                     className="cursor-pointer w-full h-full object-center object-cover lg:w-full lg:h-full"
                   />
                 </Link>
               </div>
               <div className="mt-4 flex justify-between">
                 <div>
-                  <Link className="hover:" href={`/produtos/${product.id}`}>
+                  <Link className="hover:" href={`/produtos/${product?.id}`}>
                     <h3 className="cursor-pointer text-sm text-gray-700 dark:text-slate-300">
-                      {product.nome}
+                      {product?.nome}
                     </h3>
                   </Link>
                   <p className="text-sm font-medium text-gray-900 dark:text-slate-400">
-                    R$ {product.preco}
+                    R$ {product?.preco}
                   </p>
                 </div>
               </div>

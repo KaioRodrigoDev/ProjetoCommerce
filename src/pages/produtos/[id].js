@@ -1,26 +1,3 @@
-/*
-  This example requires Tailwind CSS v2.0+ 
-  
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    theme: {
-      extend: {
-        gridTemplateRows: {
-          '[auto,auto,1fr]': 'auto auto 1fr',
-        },
-      },
-    },
-    plugins: [
-      // ...
-      require('@tailwindcss/aspect-ratio'),
-    ],
-  }
-  ```
-*/
 import { useEffect, useState } from 'react'
 import { StarIcon } from '@heroicons/react/solid'
 import { RadioGroup } from '@headlessui/react'
@@ -105,7 +82,7 @@ export default function SingleProduct() {
             <div className="mt-6 max-w-2xl mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:gap-x-8">
               <div className="hidden aspect-w-3 aspect-h-4 rounded-lg overflow-hidden lg:block">
                 <img
-                  src={product.images[0].src}
+                  src={singleProduct?.imagem?.[0]?.url}
                   className="w-full h-full object-center object-cover"
                 />
               </div>
@@ -331,7 +308,7 @@ export default function SingleProduct() {
 
                   <div className="mt-4 space-y-6">
                     <p className="text-sm text-gray-600 dark:text-slate-400">
-                      {product.details}
+                      {product?.details}
                     </p>
                   </div>
                 </div>

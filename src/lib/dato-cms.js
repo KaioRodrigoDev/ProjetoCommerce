@@ -73,4 +73,21 @@ export async function getLastsProduct() {
   return data.allCamisas
 }
 
-export default { getAllProducts, getProduct, getLastsProduct }
+export async function getSearch(search) {
+  const data = await AXIOSCmsAPI(`
+  {
+    allCamisas(filter: {nome: {matches: {pattern: "${search}"}}}) {
+      id
+    nome
+    preco
+    imagem {
+      url
+      }
+    }
+  }
+  `)
+
+  return data.allCamisas
+}
+
+export default { getAllProducts, getProduct, getLastsProduct, getSearch }
