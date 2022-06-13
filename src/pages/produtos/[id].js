@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useLayoutEffect } from 'react'
 import { StarIcon } from '@heroicons/react/solid'
 import { RadioGroup } from '@headlessui/react'
 import { useRouter } from 'next/router'
@@ -66,9 +66,9 @@ export default function SingleProduct() {
 
   const { query } = useRouter()
 
-  useEffect(async () => {
+  useLayoutEffect(() => {
     console.log(query.id)
-    const prod = await getProduct(query.id).then(res => {
+    const prod = getProduct(query.id).then(res => {
       setsingleProduct(res)
     })
   }, [])

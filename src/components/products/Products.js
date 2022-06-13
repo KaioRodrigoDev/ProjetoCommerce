@@ -9,7 +9,7 @@ export default function Products({ products }) {
         <motion.product
           initial={{ opacity: 0, y: +100 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.5 + 0.2 * key }}
+          transition={{ duration: 0.5, delay: 0.3 + 0.2 * key }}
           key={product?.id}
         >
           <div key={product?.id} className="group relative">

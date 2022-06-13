@@ -1,7 +1,11 @@
 import { firebase, auth } from '../../src/services/firebase'
 import { LockClosedIcon } from '@heroicons/react/solid'
+import useAuth from '../hooks/useAuth'
 
 export default function Login() {
+  const { user, signin } = useAuth()
+  console.log(user)
+
   async function SignInWithGoogle() {
     try {
       const provider = new firebase.auth.GoogleAuthProvider()
@@ -41,7 +45,7 @@ export default function Login() {
           <h2 className="mt-6 text-center text-3xl font-extrabold ">
             Faça Login com sua conta
           </h2>
-          <button onClick={SignInWithGoogle}>
+          <button onClick={() => signin()}>
             <img
               className="h-6 w-auto"
               src="https://img.icons8.com/color/344/google-logo.png"

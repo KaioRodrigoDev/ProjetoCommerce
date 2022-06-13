@@ -2,12 +2,12 @@ import firebase from 'firebase/app'
 import 'firebase/auth'
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyA2UzjHg28XnAeFOzPdrpQ93LcyEJw9uyM',
-  authDomain: 'jgsport-e0a51.firebaseapp.com',
-  projectId: 'jgsport-e0a51',
-  storageBucket: 'jgsport-e0a51.appspot.com',
-  messagingSenderId: '1095105242126',
-  appId: '1:1095105242126:web:740f96bad5581e7521885f'
+  apiKey: 'AIzaSyCTiMYmSDbaPyyLE5uq-RKEmuGS5_cGsZo',
+  authDomain: 'jgsport-62096.firebaseapp.com',
+  projectId: 'jgsport-62096',
+  storageBucket: 'jgsport-62096.appspot.com',
+  messagingSenderId: '428323953470',
+  appId: '1:428323953470:web:88134926fdc682d68fea6f'
 }
 
 if (!firebase.apps.length) {
@@ -16,4 +16,4 @@ if (!firebase.apps.length) {
 
 const auth = firebase.auth()
 
-export { firebase, auth }
+export default firebase

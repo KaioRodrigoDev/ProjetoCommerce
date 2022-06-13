@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import { motion, useCycle } from 'framer-motion'
+import useAuth from '../../hooks/useAuth'
 
 const navigation = [
   { name: 'Home', href: '/' },
@@ -52,12 +53,14 @@ import {
 } from '@heroicons/react/solid'
 
 export default function Navbar() {
+  const { user, signin } = useAuth()
+
   const [isOpen, setIsOpen] = useState(true)
 
   return (
     <div className="min-h-full border-b-2 border-slate-500 ">
-      <div className="flex items-center justify-between px-10 py-4 bg-white dark:bg-bg dark:text-white">
-        <div className="flex items-center">
+      <div className="flex items-center  px-10 py-4 bg-white dark:bg-bg dark:text-white">
+        <div className="flex  items-center">
           <div>
             <img
               className="block  h-8 w-auto"
@@ -159,6 +162,18 @@ export default function Navbar() {
               </form>
             </div>
           </motion.nav>
+        </div>
+        <div className="ml-auto">
+          {user !== false && (
+            <Link
+              className="flex items-center focus:outline-none"
+              href="/login"
+            >
+              <span className="text-sm font-medium text-gray-800 dark:text-slate-200">
+                Login
+              </span>
+            </Link>
+          )}
         </div>
       </div>
     </div>

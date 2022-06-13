@@ -2,8 +2,12 @@ import Link from 'next/link'
 import Products from '../components/products/Products'
 import { useState, useEffect } from 'react'
 import { getAllProducts } from '../lib/dato-cms'
+import useAuth from '../hooks/useAuth'
 
 export default function Home() {
+  const { user, signin } = useAuth()
+  console.log(user)
+
   const [listProdutos, setListProdutos] = useState()
   useEffect(async () => {
     await getAllProducts().then(data => {
