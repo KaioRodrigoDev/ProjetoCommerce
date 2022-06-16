@@ -6,15 +6,15 @@ import { SearchIcon } from '@heroicons/react/outline'
 export default function Example() {
   const [listProdutos, setListProdutos] = useState()
   const [search, setSearch] = useState('')
-  useEffect(async () => {
-    await getAllProducts().then(data => {
+  useEffect(() => {
+    getAllProducts().then(data => {
       setListProdutos(data)
       console.log(data)
     })
   }, [])
 
-  async function Search(e) {
-    const PSearch = await getSearch(e.target.value).then(data => {
+  function Search(e) {
+    const PSearch = getSearch(e.target.value).then(data => {
       setListProdutos(data)
     })
   }

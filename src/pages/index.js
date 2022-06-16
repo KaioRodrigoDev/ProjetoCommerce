@@ -9,8 +9,8 @@ export default function Home() {
   console.log(user)
 
   const [listProdutos, setListProdutos] = useState()
-  useEffect(async () => {
-    await getAllProducts().then(data => {
+  useEffect(() => {
+    getAllProducts().then(data => {
       setListProdutos(data)
       console.log(data)
     })

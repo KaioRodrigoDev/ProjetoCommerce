@@ -81,8 +81,8 @@ export default function Navbar() {
                   )}
                 </div>
                 {menu.map(({ name, href }) => (
-                  <div className="border-b-2 py-4">
-                    <Link href={href} key={name}>
+                  <div className="border-b-2 py-4" key={name}>
+                    <Link href={href}>
                       <a className="text-sm font-medium text-gray-800 hover:text-gray-600 dark:text-slate-200">
                         {name}
                       </a>
