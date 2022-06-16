@@ -1008,18 +1008,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-left: calc(0.75rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
-.self-end {
-  align-self: flex-end;
-}
-
-.self-center {
-  align-self: center;
-}
-
-.self-stretch {
-  align-self: stretch;
-}
-
 .overflow-hidden {
   overflow: hidden;
 }
@@ -1229,16 +1217,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .bg-principal {
   --tw-bg-opacity: 1;
   background-color: rgb(5 5 5 / var(--tw-bg-opacity));
-}
-
-.bg-red-100 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(254 226 226 / var(--tw-bg-opacity));
-}
-
-.bg-red-200 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(254 202 202 / var(--tw-bg-opacity));
 }
 
 .fill-current {
@@ -1920,11 +1898,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   .dark\:bg-bg {
     --tw-bg-opacity: 1;
     background-color: rgb(22 22 22 / var(--tw-bg-opacity));
-  }
-
-  .dark\:bg-red-100 {
-    --tw-bg-opacity: 1;
-    background-color: rgb(254 226 226 / var(--tw-bg-opacity));
   }
 
   .dark\:text-white {

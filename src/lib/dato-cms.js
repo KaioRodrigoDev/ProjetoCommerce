@@ -89,5 +89,3 @@ export async function getSearch(search) {
 
   return data.allCamisas
 }
-
-export default { getAllProducts, getProduct, getLastsProduct, getSearch }
