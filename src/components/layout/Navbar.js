@@ -2,55 +2,24 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { motion, useCycle } from 'framer-motion'
 import useAuth from '../../hooks/useAuth'
+import { XIcon } from '@heroicons/react/outline'
+import { MenuIcon } from '@heroicons/react/solid'
 
 const navigation = [
   { name: 'Home', href: '/' },
   { name: 'Produtos', href: '/produtos' }
 ]
 
-const sidebar = {
-  open: {
-    x: '0%',
-    opacity: 1
-  },
-  closed: {
-    x: '-100%'
-  }
-}
-
-const filters = [
-  {
-    id: 'color',
-    name: 'Color',
-    options: [
-      { value: 'white', label: 'White', checked: false },
-      { value: 'beige', label: 'Beige', checked: false },
-      { value: 'blue', label: 'Blue', checked: false },
-      {
-        value: 'brown',
-        label: 'Brown',
-        option: ['TRUE', 'FALSE'],
-        checked: false
-      },
-      { value: 'green', label: 'Green', checked: false },
-      { value: 'purple', label: 'Purple', checked: false }
-    ]
-  }
-]
-
 const variants = {
   open: { opacity: 1, x: 0 },
   closed: { opacity: 0, x: '+100%' }
 }
-import { Dialog, Disclosure, Menu, Transition } from '@headlessui/react'
-import { XIcon } from '@heroicons/react/outline'
-import {
-  ChevronDownIcon,
-  FilterIcon,
-  MinusSmIcon,
-  PlusSmIcon,
-  ViewGridIcon
-} from '@heroicons/react/solid'
+
+const menu = [
+  { name: 'Home', href: '/' },
+  { name: 'Produtos', href: '/produtos' },
+  { name: 'Contato', href: '/contato' }
+]
 
 export default function Navbar() {
   const { user, signin } = useAuth()
@@ -86,7 +55,7 @@ export default function Navbar() {
             <button onClick={() => setIsOpen(isOpen => !isOpen)} />
             <div className="ml-auto relative max-w-xs w-full h-full bg-white shadow-xl py-4 pb-12 flex flex-col overflow-y-auto">
               <div className="px-4 flex items-center justify-between">
-                <h2 className="text-lg font-medium text-gray-900">Filters</h2>
+                <h2 className="text-lg font-medium text-gray-900">Menu</h2>
                 <button
                   type="button"
                   className="-mr-2 w-10 h-10 bg-white p-2 rounded-md flex items-center justify-center text-gray-400"
@@ -97,22 +66,41 @@ export default function Navbar() {
                 </button>
               </div>
 
-              {/* Mobile Filters */}
-              
+              <div className="px-4 ">
+                {/* Mobile Filters */}
+                <div className="border-b-2 py-4">
+                  {user !== false && (
+                    <Link
+                      className="flex items-center focus:outline-none  "
+                      href="/login"
+                    >
+                      <a className="text-sm font-medium text-gray-800 hover:text-gray-600 dark:text-slate-200 ">
+                        Login
+                      </a>
+                    </Link>
+                  )}
+                </div>
+                {menu.map(({ name, href }) => (
+                  <div className="border-b-2 py-4">
+                    <Link href={href} key={name}>
+                      <a className="text-sm font-medium text-gray-800 hover:text-gray-600 dark:text-slate-200">
+                        {name}
+                      </a>
+                    </Link>
+                  </div>
+                ))}
+              </div>
             </div>
           </motion.nav>
         </div>
-        <div className="ml-auto">
-          {user !== false && (
-            <Link
-              className="flex items-center focus:outline-none"
-              href="/login"
-            >
-              <span className="text-sm font-medium text-gray-800 dark:text-slate-200">
-                Login
-              </span>
-            </Link>
-          )}
+        <div className="ml-auto lg:hidden">
+          <button
+            className="flex items-center justify-center w-8 h-8  "
+            onClick={() => setIsOpen(isOpen => !isOpen)}
+          >
+            <span className="sr-only">Open menu</span>
+            <MenuIcon className="h-6 w-6" aria-hidden="true" />
+          </button>
         </div>
       </div>
     </div>
