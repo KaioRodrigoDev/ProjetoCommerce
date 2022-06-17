@@ -24,10 +24,10 @@ const menu = [
 export default function Navbar() {
   const { user, signin } = useAuth()
 
-  const [isOpen, setIsOpen] = useState(true)
+  const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <div className="min-h-full border-b-2 border-slate-500 ">
+    <div className="min-h-full border-b-2 border-white ">
       <div className="flex items-center  px-10 py-4 bg-white dark:bg-bg dark:text-white">
         <div className="flex  items-center">
           <div>

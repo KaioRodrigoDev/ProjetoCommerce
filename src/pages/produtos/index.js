@@ -26,7 +26,7 @@ export default function Example() {
         <div className="flex bg-white rounded-xl mt-2 items-center">
           <input
             onChange={setSearch}
-            className="h-8 pl-2 focus-none outline-none rounded-l-xl "
+            className="h-8 w-40 lg:w-full pl-2 focus-none outline-none rounded-l-xl "
           />
           <SearchIcon
             onClick={() => Search(search)}
@@ -35,7 +35,7 @@ export default function Example() {
           />
         </div>
       </div>
-      <div className="border-b-2 border-b-white mx-6 pt-4" />
+      <div className="border-b-2 border-b-white px-6 pt-4" />
       <div className="max-w-2xl sm:py-10 sm:px-6 lg:max-w-7xl lg:pr-18">
         <Products products={listProdutos} />
       </div>

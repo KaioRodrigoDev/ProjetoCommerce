@@ -73,6 +73,18 @@ export default function SingleProduct() {
     })
   }, [])
 
+  const handleSubmit = e => {
+    e.preventDefault()
+    console.log(
+      'Produto selecionado:',
+      singleProduct.nome,
+      'Cor selecionada:',
+      selectedColor.name,
+      'Tamanho selecionado:',
+      selectedSize.name
+    )
+  }
+
   return (
     <div className="bg-white dark:bg-bg">
       <div className="pt-6">
@@ -134,7 +146,7 @@ export default function SingleProduct() {
               </div>
             </div>
 
-            <form className="mt-10">
+            <form className="mt-10" onSubmit={handleSubmit}>
               {/* Colors */}
               <div>
                 <h3 className="text-sm text-gray-900 font-medium dark:text-slate-300">
